@@ -39,20 +39,14 @@
     </dependency>
 
     <!-- Selenium WebDriver for browser automation -->
+
+    <!-- https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
     <dependency>
       <groupId>org.seleniumhq.selenium</groupId>
       <artifactId>selenium-java</artifactId>
-      <version>4.9.0</version> <!-- Latest stable version of Selenium -->
-      <scope>test</scope>
+      <version>4.27.0</version>
     </dependency>
 
-    <!-- Selenium ChromeDriver for Google Chrome -->
-    <dependency>
-      <groupId>org.seleniumhq.selenium</groupId>
-      <artifactId>selenium-chrome-driver</artifactId>
-      <version>4.9.0</version> <!-- Latest stable version -->
-      <scope>test</scope>
-    </dependency>
 
     <!-- JUnit 5 dependencies -->
     <dependency>
@@ -93,7 +87,7 @@
             <include>**/*Test.java</include> <!-- This will include all test files with 'Test' suffix -->
           </includes>
         </configuration>
-      </plugin>
+      </plugin><plugin><groupId>org.apache.maven.plugins</groupId><artifactId>maven-compiler-plugin</artifactId><configuration><source>8</source><target>8</target><compilerArgs>--enable-preview</compilerArgs></configuration></plugin>
     </plugins>
   </build>
 
