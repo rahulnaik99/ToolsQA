@@ -5,7 +5,7 @@ import io.cucumber.junit.CucumberOptions;
 import org.junit.runner.RunWith;
 
 @RunWith(Cucumber.class)
-@CucumberOptions(features = "src/test/resources/FeatureFiles",glue = "Stepdefinition",
+@CucumberOptions(features = "src/test/resources/FeatureFiles/",glue = "Stepdefinition",
 plugin = {"pretty",                                     // Console output
         "html:TestEvidences/cucumber-reports/html-report.html", // HTML report
         "json:TestEvidences/cucumber-reports/cucumber.json",  // JSON report

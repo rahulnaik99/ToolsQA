@@ -1,6 +1,7 @@
 package Stepdefinition;
 
 import Pages.elementPG;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
@@ -25,14 +26,26 @@ public class StepdefinitionElement {
 
     }
 
-    @Then("^User Enter the information$")
-    public void enterInfo(){
-        page.enterInfoTextBox();
-
+    @Then("^User Select (.*) and Enter the information$")
+    public void enterInfo(String option){
+        switch (option) {
+            case "Text Box":
+                page.enterInfoTextBox();
+                break;
+            case "Check Box":
+                page.checkBox(new String[]{"Downloads", "React"});
+                break;
+        }
     }
 
     @Then("User Validates the Results")
     public void userValidatesTheResults() {
-        page.validateOutput();
+        page.validateTextboxOutput();
+    }
+
+    @And("Validates the Check box output")
+    public void validatesTheCheckBoxOutput() {
+
+        page.validateCheckboxOutput("You have selected : downloads wordFile excelFile");
     }
 }

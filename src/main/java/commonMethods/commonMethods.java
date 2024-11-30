@@ -17,9 +17,9 @@ public class commonMethods {
     }
     public boolean click(By element){
         if (driver.findElement(element).isDisplayed()){
+
             driver.findElement(element).click();
             return true;
-
         }
         System.out.printf("Element noty found");
         return false;
@@ -47,4 +47,8 @@ public class commonMethods {
         js.executeScript("arguments[0].scrollIntoView(true);",elementWeb);
 
     }
+    public void homePage(){
+        driver.get("https://demoqa.com/");
+    }
+
 }
