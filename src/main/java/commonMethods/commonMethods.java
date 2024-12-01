@@ -4,6 +4,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import testBase.base;
 
 import java.awt.*;
@@ -16,7 +17,9 @@ public class commonMethods {
         this.driver=base.initializeDriver();
     }
     public boolean click(By element){
+        scrollToElement(element);
         if (driver.findElement(element).isDisplayed()){
+
 
             driver.findElement(element).click();
             return true;
@@ -27,6 +30,7 @@ public class commonMethods {
     }
     public boolean enter(By element,String value){
         if (driver.findElement(element).isDisplayed()){
+            driver.findElement(element).clear();
             driver.findElement(element).sendKeys(value);
             return true;
 
@@ -49,6 +53,18 @@ public class commonMethods {
     }
     public void homePage(){
         driver.get("https://demoqa.com/");
+    }
+    public boolean checkRadioButton(By radioButton){
+        return driver.findElement(radioButton).isSelected();
+
+    }
+    public Actions actions(){
+        Actions action = new Actions(driver);
+        return action;
+    }
+    public WebElement webElement(By element){
+         WebElement webElement = driver.findElement(element);
+         return webElement;
     }
 
 }

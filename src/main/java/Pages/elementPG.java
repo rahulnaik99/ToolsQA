@@ -1,12 +1,18 @@
 package Pages;
 
 import commonMethods.commonMethods;
+import io.cucumber.java.en_old.Ac;
+import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 import testBase.base;
 
+import javax.swing.*;
 import java.awt.*;
-import java.util.Locale;
+import java.util.List;
+
 
 public class elementPG {
     WebDriver driver;
@@ -17,9 +23,8 @@ public class elementPG {
         methods = new commonMethods();
         driver = base.initializeDriver();
     }
+
     By outputString = By.cssSelector("div[class='display-result mt-4']");
-    By elements = By.cssSelector("path[d$='16z']");
-    By textBox = By.xpath("//span[text()='Text Box']");
     By fullName = By.cssSelector("input[placeholder='Full Name']");
     By email = By.cssSelector("input[placeholder='name@example.com']");
     By currentAddress = By.cssSelector("textarea[placeholder='Current Address']");
@@ -29,6 +34,32 @@ public class elementPG {
     By emailOutput = By.cssSelector("p[id='email']");
     By currentAddressOutput = By.cssSelector("p[id='currentAddress']");
     By permanentAddressOutput = By.cssSelector("p[id='permanentAddress']");
+    By expandAll = By.cssSelector("Button[class='rct-option rct-option-expand-all']");
+    By deskTopSelect = By.cssSelector("input#tree-node-desktop + .rct-checkbox");
+    By documentSelect = By.cssSelector("input#tree-node-documents + .rct-checkbox");
+    By downloadsSelect = By.cssSelector("input#tree-node-downloads + .rct-checkbox");
+    By notesSelect = By.cssSelector("input#tree-node-notes + .rct-checkbox");
+    By commandsSelect = By.cssSelector("input#tree-node-commands + .rct-checkbox");
+    By workspaceSelect = By.cssSelector("input#tree-node-workspace + .rct-checkbox");
+    By reactSelect = By.cssSelector("input#tree-node-react + .rct-checkbox");
+    By angularSelect = By.cssSelector("input#tree-node-angular + .rct-checkbox");
+    By veuSelect = By.cssSelector("input#tree-node-veu + .rct-checkbox");
+    By officeSelect = By.cssSelector("input#tree-node-office + .rct-checkbox");
+    By publicSelect = By.xpath("//span[text()='Public']");
+    By privateSelect = By.xpath("//span[text()='Private']");
+    By classifiedSelect = By.xpath("//span[text()='Classified']");
+    By generalSelect = By.xpath("//span[text()='General']");
+    By wordFlieSelect = By.cssSelector("input#tree-node-wordFile + .rct-checkbox");
+    By excelSelect = By.cssSelector("input#tree-node-excelFile + .rct-checkbox");
+    By addButton = By.id("addNewRecordButton");
+    By tableFirstName= By.id("firstName");
+    By tableLastName= By.id("lastName");
+    By tableEmail= By.id("userEmail");
+    By tableAge= By.id("age");
+    By tableSalary= By.id("salary");
+    By tableDepartment= By.id("department");
+    By tableSubmit= By.id("submit");
+    By seachTable = By.cssSelector("input[id='searchBox']");
 
     String Fullname = "Rahul Naik";
     String stringEmail = "test@gmail.com";
@@ -36,7 +67,7 @@ public class elementPG {
     String stringPermanentAddress = "67 RD Rajaji Nagar";
 
     public boolean enterInfoTextBox() {
-        methods.click(textBox);
+
         methods.enter(fullName, Fullname);
         methods.enter(email, stringEmail);
         methods.enter(currentAddress, stringCurrentAddress);
@@ -66,32 +97,7 @@ public class elementPG {
     }
 
     public boolean checkBox(String[] selectingFolderFiles) {
-        By checkBox = By.xpath("//span[text()='Check Box']");
-        By expandAll = By.cssSelector("Button[class='rct-option rct-option-expand-all']");
-        By deskTopSelect = By.cssSelector("input#tree-node-desktop + .rct-checkbox");
-        By documentSelect = By.cssSelector("input#tree-node-documents + .rct-checkbox");
-        By downloadsSelect = By.cssSelector("input#tree-node-downloads + .rct-checkbox");
-
-        By notesSelect = By.cssSelector("input#tree-node-notes + .rct-checkbox");
-        By commandsSelect = By.cssSelector("input#tree-node-commands + .rct-checkbox");
-        By workspaceSelect = By.cssSelector("input#tree-node-workspace + .rct-checkbox");
-        By reactSelect = By.cssSelector("input#tree-node-react + .rct-checkbox");
-        By angularSelect = By.cssSelector("input#tree-node-angular + .rct-checkbox");
-        By veuSelect = By.cssSelector("input#tree-node-veu + .rct-checkbox");
-
-        By officeSelect = By.cssSelector("input#tree-node-office + .rct-checkbox");
-        By publicSelect = By.xpath("//span[text()='Public']");
-        By privateSelect = By.xpath("//span[text()='Private']");
-        By classifiedSelect = By.xpath("//span[text()='Classified']");
-        By generalSelect = By.xpath("//span[text()='General']");
-
-        By wordFlieSelect = By.cssSelector("input#tree-node-wordFile + .rct-checkbox");
-        By excelSelect = By.cssSelector("input#tree-node-excelFile + .rct-checkbox");
-
-
-        methods.click(checkBox);
         methods.click(expandAll);
-
         for (String folderFile : selectingFolderFiles) {
             switch (folderFile) {
                 case "Desktop":
@@ -142,19 +148,131 @@ public class elementPG {
                     break;
                 case "Excel File":
                     methods.click(excelSelect);
-                        break;
+                    break;
 
             }
         }
         return true;
 
     }
-    public boolean validateCheckboxOutput(String folderFile){
-        methods.scrollToElement(outputString);
 
-       return folderFile.equalsIgnoreCase(methods.fetch(outputString));
+    public boolean validateCheckboxOutput(String folderFile) {
+        methods.scrollToElement(outputString);
+        return folderFile.equalsIgnoreCase(methods.fetch(outputString));
+
+    }
+    public void radioButtonValidation(String button) {
+        By radioButtonOutput  = By.cssSelector("p[class='mt-3']");
+        String[] parts = methods.fetch(radioButtonOutput).split(" ");
+        System.out.printf(parts[3]);
+        Assert.assertTrue("Pass",parts[3].equalsIgnoreCase(button));
     }
 
+    public void selectFromElements(String options) {
+        By elementOption = By.xpath("//span[text()='"+options+"']");
+        methods.click(elementOption);
+    }
+    public boolean  radioButton(String button) {
+        By radioButton  = By.xpath("//label[@for='"+button+"Radio']");
+        methods.click(radioButton);
+            return methods.checkRadioButton(radioButton);
+        }
+        public void nowOfRowInTable(){
+            By rowsNo = By.cssSelector("div[class='rt-tr-group']");
+            List<WebElement> rows = driver.findElements(rowsNo);
+            Assert.assertTrue("Table is Empty", rows.size() > 0);
+            System.out.printf(String.valueOf(rows.size()));
+
+        }
+        public void addDateToTable(String name,String lastname,String email,String age,String salary,String department){
+            By rowsNo = By.cssSelector("div[class='rt-tr-group']");
+            List<WebElement> rows = driver.findElements(rowsNo);
 
 
+           methods.click(addButton);
+           methods.enter(tableFirstName,name);
+           methods.enter(tableLastName,lastname);
+           methods.enter(tableEmail,email);
+           methods.enter(tableDepartment,department);
+           methods.enter(tableAge,age);
+           methods.enter(tableSalary,salary);
+           methods.click(tableSubmit);
+
+
+
+        }
+        public void editTable(String name,String lastname,String email,String age,String salary,String department) {
+            By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Edit']");
+            By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Edit']");
+            try{
+                methods.click(editPathOdd);
+            }
+            catch (Exception e){
+                methods.click(editPathEven);
+            }
+                methods.enter(tableFirstName, name);
+                methods.enter(tableLastName, lastname);
+                methods.enter(tableEmail, email);
+                methods.enter(tableDepartment, department);
+                methods.enter(tableAge, age);
+                methods.enter(tableSalary, salary);
+                methods.click(tableSubmit);
+                methods.click(tableSubmit);
+
+        }
+        public void tableRowDelete(String name) {
+            By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Delete']");
+            By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Delete']");
+            try{
+                methods.click(editPathOdd);
+            }
+            catch (Exception e){
+                methods.click(editPathEven);
+            }
+        }
+
+    public void tableSearch(String name) {
+
+        methods.enter(seachTable,name);
+        By editPathOdd = By.xpath("//div[(text()='" + name + "')]");
+        String searchResult = methods.fetch(editPathOdd);
+        Assert.assertTrue(name.equalsIgnoreCase(searchResult));
+
+    }
+
+    public void tableSort(String sortBy) {
+        By sort = By.xpath("//div[text()='"+sortBy+"']");
+        methods.click(sort);
+
+
+    }
+
+    public void verifydoubleClick(String button) {
+        By doubleClicks = By.id("doubleClickBtn");
+        By doubleClickOutput= By.id("doubleClickMessage");
+        methods.scrollToElement(doubleClicks);
+        methods.actions().doubleClick(methods.webElement(doubleClicks)).perform();
+        Assert.assertTrue(methods.fetch(doubleClickOutput).equalsIgnoreCase("You have done a double click"));
+
+    }
+
+    public void verifyRightClick() {
+        By rightClicks = By.xpath("//*[text()='Right Click Me']");
+        By rightClickOutput= By.id("rightClickMessage");
+        methods.scrollToElement(rightClicks);
+        methods.actions().contextClick(methods.webElement(rightClicks)).perform();
+        Assert.assertTrue(methods.fetch(rightClickOutput).equalsIgnoreCase("You have done a right click"));
+    }
+    public void verifyClickMe() {
+        By dynamicClick = By.xpath("//*[text()='Click Me']");
+        By dynamicClickOutput= By.id("dynamicClickMessage");
+        methods.scrollToElement(dynamicClick);
+        methods.actions().click(methods.webElement(dynamicClick)).perform();
+        Assert.assertTrue(methods.fetch(dynamicClickOutput).equalsIgnoreCase("You have done a dynamic click"));
+    }
 }
+
+
+
+
+

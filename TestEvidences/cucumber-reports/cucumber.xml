@@ -1,15 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="2" time="6.745">
-    <testcase classname="Test Elements functions" name="Validate the Textbox Functionality" time="5.444">
-        <system-out><![CDATA[When User Select the Elements...............................................passed
-Then User Select Text Box and Enter the information.........................passed
-Then User Validates the Results.............................................passed
-]]></system-out>
-    </testcase>
-    <testcase classname="Test Elements functions" name="Validate the Checkbox Functionality" time="1.146">
-        <system-out><![CDATA[When User Select the Elements...............................................passed
-Then User Select Check Box and Enter the information........................passed
-And Validates the Check box output..........................................passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="6.519">
+    <testcase classname="Test Elements functions" name="Validate the Web Tables Functionality" time="6.354">
+        <system-out><![CDATA[When User Select the Elements From the Homepage.............................passed
+Then User Select Buttons From Elements......................................passed
+When User Verify double click me Button.....................................passed
+When User Verify right click Button.........................................passed
+When User Verify dynamic click Button.......................................passed
 ]]></system-out>
     </testcase>
 </testsuite>
