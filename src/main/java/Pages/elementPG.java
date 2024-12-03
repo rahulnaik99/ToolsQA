@@ -7,10 +7,19 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import testBase.base;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.File;
+import java.io.IOException;
+import java.net.HttpURLConnection;
+import java.net.MalformedURLException;
+import java.net.ProtocolException;
+import java.net.URL;
+import java.time.Duration;
 import java.util.List;
 
 
@@ -269,6 +278,51 @@ public class elementPG {
         methods.scrollToElement(dynamicClick);
         methods.actions().click(methods.webElement(dynamicClick)).perform();
         Assert.assertTrue(methods.fetch(dynamicClickOutput).equalsIgnoreCase("You have done a dynamic click"));
+    }
+
+    public void nextWindowValidation() {
+        By link = By.cssSelector("a#simpleLink");
+        methods.click(link);
+        methods.handleMultplieWindow();
+
+    }
+
+    public void apiValidation(By Element) throws IOException {
+
+        System.out.printf(methods.linkChecker(Element));
+
+        }
+
+
+    public void downLoad(By elementDownload) {
+        methods.webElement(elementDownload).click();
+        String downloadPath = "C:\\Users\\"+System.getProperty("user.name")+"\\Downloads\\sampleFile.jpeg";
+
+        File downloadFile = new File(downloadPath);
+        Assert.assertTrue(downloadFile.exists());
+
+
+    }
+
+    public void upLoad(By elementUpload) {
+        methods.webElement(elementUpload).sendKeys("C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
+    }
+
+    public void buttonValidate(int arg0) {
+        By beforeButton = By.id("enableAfter");
+        By buttonColor = By.id("colorChange");
+
+        System.out.println(methods.isEnabled(beforeButton));
+
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+        wait.until(ExpectedConditions.elementToBeClickable(beforeButton));
+
+
+        System.out.println(methods.isEnabled(beforeButton));
+        String button = driver.findElement(buttonColor).getCssValue("color");
+        System.out.printf(button);
+
+
     }
 }
 

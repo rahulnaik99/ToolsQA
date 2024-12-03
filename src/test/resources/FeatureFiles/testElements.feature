@@ -32,9 +32,32 @@ Scenario: Validate the Web Tables Functionality
     Then User Sort the Column
     Then User search for the Record
 
-  Scenario: Validate the Web Tables Functionality
+  Scenario: Validate the Dynamic Button Functionality
     When User Select the Elements From the Homepage
     Then User Select Buttons From Elements
     When User Verify double click me Button
     When User Verify right click Button
     When User Verify dynamic click Button
+
+  Scenario: Validate the Links Functionality
+#    When User Select the Elements From the Homepage
+#    Then User Select Links From Elements
+    When User Verify new Window Link
+    When User Validates the Links with API Status
+
+Scenario: Validate the broken Link and Image
+  When User Select the Elements From the Homepage
+  Then User Select Broken Links - Images From Elements
+  Then Validate that the Image has a broken Link
+
+Scenario: validate Upload And Download Feature
+    When User Select the Elements From the Homepage
+    Then User Select Upload and Download From Elements
+    Then User download the file
+    Then User upload the file
+
+  Scenario: validate Uploadn And Download Feature
+    When User Select the Elements From the Homepage
+    Then User Select Dynamic Properties From Elements
+    Then User Click button is enable after 5 sceonds
+    Then User Check the Color change

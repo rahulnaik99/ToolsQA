@@ -14,6 +14,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import javax.swing.*;
 import java.awt.*;
+import java.io.IOException;
 
 public class StepdefinitionElement {
     elementPG page;
@@ -112,8 +113,51 @@ public class StepdefinitionElement {
         page.verifyRightClick();
     }
 
-    @When("User Verify dynamic click Button")
+    @When("^User Verify dynamic click Button$")
     public void userVerifyDynamicClickButton() {
         page.verifyClickMe();
+    }
+
+    @When("User Verify new Window Link")
+    public void userVerifyNewWindowLink() {
+        page.nextWindowValidation();
+    }
+
+    @When("User Validates the Links with API Status")
+    public void userValidatesTheLinksWithAPIStatus() throws IOException {
+        page.apiValidation(By.tagName("a"));
+    }
+
+    @Then("Validate that the Image has a broken Link")
+    public void validateThatTheImageHasABrokenLink() throws IOException {
+        page.apiValidation(By.xpath("(//img[@src='/images/Toolsqa.jpg'])[2]"));
+        page.apiValidation(By.xpath("//img[@src='/images/Toolsqa_1.jpg']"));
+        page.apiValidation(By.cssSelector("a[href=\"http://the-internet.herokuapp.com/status_codes/500\"]"));
+    }
+
+    @Then("Valdate that the Link is broken or not")
+    public void valdateThatTheLinkIsBrokenOrNot() {
+    }
+
+    @Then("User download the file")
+    public void userDownloadTheFile() {
+        By downloadFile = By.cssSelector("a[id='downloadButton']");
+        page.downLoad(downloadFile);
+
+    }
+
+    @Then("User upload the file")
+    public void userUploadTheFile() {
+        By uploadFileCss = By.cssSelector("input#uploadFile");
+        page.upLoad(uploadFileCss);
+    }
+
+    @Then("User Click button is enable after {int} sceonds")
+    public void userClickButtonIsEnableAfterSceonds(int arg0) {
+        page.buttonValidate(arg0);
+    }
+
+    @Then("User Check the Color change")
+    public void userCheckTheColorChange() {
     }
 }

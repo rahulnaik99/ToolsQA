@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="6.519">
-    <testcase classname="Test Elements functions" name="Validate the Web Tables Functionality" time="6.354">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="11.119">
+    <testcase classname="Test Elements functions" name="validate Uploadn And Download Feature" time="10.944">
         <system-out><![CDATA[When User Select the Elements From the Homepage.............................passed
-Then User Select Buttons From Elements......................................passed
-When User Verify double click me Button.....................................passed
-When User Verify right click Button.........................................passed
-When User Verify dynamic click Button.......................................passed
+Then User Select Dynamic Properties From Elements...........................passed
+Then User Click button is enable after 5 sceonds............................passed
+Then User Check the Color change............................................passed
 ]]></system-out>
     </testcase>
 </testsuite>
