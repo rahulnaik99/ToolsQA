@@ -1,7 +1,7 @@
 package Pages;
 
 import commonMethods.commonMethods;
-import io.cucumber.java.en_old.Ac;
+//import io.cucumber.java.en_old.Ac;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -75,7 +75,7 @@ public class elementPG {
     String stringCurrentAddress = "23 Street Banglore";
     String stringPermanentAddress = "67 RD Rajaji Nagar";
 
-    public boolean enterInfoTextBox() {
+    public boolean enterInfoTextBox() throws IOException {
 
         methods.enter(fullName, Fullname);
         methods.enter(email, stringEmail);
@@ -193,7 +193,7 @@ public class elementPG {
             System.out.printf(String.valueOf(rows.size()));
 
         }
-        public void addDateToTable(String name,String lastname,String email,String age,String salary,String department){
+        public void addDateToTable(String name,String lastname,String email,String age,String salary,String department) throws IOException {
             By rowsNo = By.cssSelector("div[class='rt-tr-group']");
             List<WebElement> rows = driver.findElements(rowsNo);
 
@@ -210,7 +210,7 @@ public class elementPG {
 
 
         }
-        public void editTable(String name,String lastname,String email,String age,String salary,String department) {
+        public void editTable(String name,String lastname,String email,String age,String salary,String department) throws IOException {
             By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Edit']");
             By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Edit']");
             try{
@@ -240,7 +240,7 @@ public class elementPG {
             }
         }
 
-    public void tableSearch(String name) {
+    public void tableSearch(String name) throws IOException {
 
         methods.enter(seachTable,name);
         By editPathOdd = By.xpath("//div[(text()='" + name + "')]");
@@ -308,20 +308,15 @@ public class elementPG {
         methods.webElement(elementUpload).sendKeys("C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
     }
 
-    public void buttonValidate(int arg0) {
+    public void buttonValidate(int  duration) {
         By beforeButton = By.id("enableAfter");
         By buttonColor = By.id("colorChange");
-
-        System.out.println(methods.isEnabled(beforeButton));
-
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
-        wait.until(ExpectedConditions.elementToBeClickable(beforeButton));
-
-
-        System.out.println(methods.isEnabled(beforeButton));
+        Assert.assertFalse(methods.isEnabled(beforeButton));
         String button = driver.findElement(buttonColor).getCssValue("color");
-        System.out.printf(button);
-
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
+        wait.until(ExpectedConditions.elementToBeClickable(beforeButton));
+        Assert.assertFalse(driver.findElement(buttonColor).getCssValue("color").equalsIgnoreCase(button));
+        Assert.assertTrue(methods.isEnabled(beforeButton));
 
     }
 }

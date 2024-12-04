@@ -62,7 +62,7 @@ public class StepdefinitionElement {
     }
 
     @Then("^User Enter the information in the Text Box$")
-    public void userEnterTheInformationInTheTextBox() {
+    public void userEnterTheInformationInTheTextBox() throws IOException {
         page.enterInfoTextBox();
     }
 
@@ -74,12 +74,12 @@ public class StepdefinitionElement {
     }
 
     @Then("User Add a New Record")
-    public void userAddANewRecord() {
+    public void userAddANewRecord() throws IOException {
         page.addDateToTable("test","test","test@bdd.com","21","21121","Automation");
     }
 
     @Then("User edit an Existing Record")
-    public void userEditAnExistingRecord() {
+    public void userEditAnExistingRecord() throws IOException {
         page.editTable("Cierra","","test@bdd.com","","","");
     }
 
@@ -89,7 +89,7 @@ public class StepdefinitionElement {
     }
 
     @Then("User search for the Record")
-    public void userSearchForTheRecord() {
+    public void userSearchForTheRecord() throws IOException {
         page.tableSearch("Cierra");
     }
 
@@ -152,12 +152,9 @@ public class StepdefinitionElement {
         page.upLoad(uploadFileCss);
     }
 
-    @Then("User Click button is enable after {int} sceonds")
-    public void userClickButtonIsEnableAfterSceonds(int arg0) {
+    @Then("User Click button is enable after {int} seconds and also check the Color of the button")
+    public void userClickButtonIsEnableAfterSeconds(int arg0) {
         page.buttonValidate(arg0);
     }
 
-    @Then("User Check the Color change")
-    public void userCheckTheColorChange() {
-    }
 }

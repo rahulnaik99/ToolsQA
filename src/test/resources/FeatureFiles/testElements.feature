@@ -40,8 +40,8 @@ Scenario: Validate the Web Tables Functionality
     When User Verify dynamic click Button
 
   Scenario: Validate the Links Functionality
-#    When User Select the Elements From the Homepage
-#    Then User Select Links From Elements
+    When User Select the Elements From the Homepage
+    Then User Select Links From Elements
     When User Verify new Window Link
     When User Validates the Links with API Status
 
@@ -56,8 +56,7 @@ Scenario: validate Upload And Download Feature
     Then User download the file
     Then User upload the file
 
-  Scenario: validate Uploadn And Download Feature
+  Scenario: validate Uploading And Download Feature
     When User Select the Elements From the Homepage
     Then User Select Dynamic Properties From Elements
-    Then User Click button is enable after 5 sceonds
-    Then User Check the Color change
+    Then User Click button is enable after 5 seconds and also check the Color of the button
