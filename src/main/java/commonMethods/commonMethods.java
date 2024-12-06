@@ -3,23 +3,23 @@ package commonMethods;
 
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xslf.usermodel.*;
+import org.junit.Test;
 import org.openqa.selenium.*;
 import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.io.FileHandler;
+import org.openqa.selenium.support.ui.Select;
 import testBase.base;
 
 import java.awt.Rectangle;
+import java.awt.event.KeyEvent;
 import java.io.*;
 import java.net.HttpURLConnection;
 import java.net.URL;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
-import java.util.Random;
 import java.util.Set;
 import java.awt.*;
-import java.nio.file.Files;
-import java.nio.file.Paths;
+
 
 public class commonMethods {
     WebDriver driver;
@@ -83,6 +83,10 @@ public class commonMethods {
 
     public WebElement webElement(By element) {
         return driver.findElement(element);
+    }
+    public Select selectElement(WebElement element) {
+        return new Select(element);
+
     }
 
     public void handleMultplieWindow() {
@@ -173,19 +177,23 @@ public class commonMethods {
         // Delete the screenshot file (optional)
 //                FileUtils.forceDelete(new File("screenshot.png"));
 
-        // Save the PowerPoint presentation
-        if (testEvidence==null){
-            testEvidence=driver.getClass().fe;
-        }
+
         FileOutputStream out = new FileOutputStream(System.getProperty("user.dir")+"/TestEvidences/PowerPoint/"+testEvidence+".ppt");
         ppt.write(out);
         out.close();
 
     }
-    public String dateTime(){
+    @Test
+    public void dateTime(){
         LocalDateTime now =  LocalDateTime.now();
         DateTimeFormatter format = DateTimeFormatter.ofPattern("yymmddHHMMSS");
-        return now.format(format);
+        System.out.println(now.format(format));
+
+    }
+    public void robotClassEnter() throws AWTException {
+        Robot robot = new Robot();
+        robot.keyPress(KeyEvent.VK_ENTER);
+        robot.keyRelease(KeyEvent.VK_ENTER);
 
     }
 }
