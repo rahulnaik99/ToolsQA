@@ -14,7 +14,7 @@ Feature: Test Elements functions
     Then User Select the Folder and Files
     And Validates the Check box output
 
-Scenario: Validate the Rado Button Functionality
+  Scenario: Validate the Rado Button Functionality
     When User Navigates to Home Page and select Elements
     Then User Select Radio Button From Elements
     Then User Select the Radio Button yes
@@ -22,7 +22,7 @@ Scenario: Validate the Rado Button Functionality
     Then User Select the Radio Button impressive
     And Validates the Radio Button output for impressive
 
-Scenario: Validate the Web Tables Functionality
+  Scenario: Validate the Web Tables Functionality
     When User Navigates to Home Page and select Elements
     Then User Select Web Tables From Elements
     When User Verify that Table is Loaded
@@ -45,12 +45,12 @@ Scenario: Validate the Web Tables Functionality
     When User Verify new Window Link
     When User Validates the Links with API Status
 
-Scenario: Validate the broken Link and Image
-  When User Navigates to Home Page and select Elements
-  Then User Select Broken Links - Images From Elements
-  Then Validate that the Image has a broken Link
+  Scenario: Validate the broken Link and Image
+    When User Navigates to Home Page and select Elements
+    Then User Select Broken Links - Images From Elements
+    Then Validate that the Image has a broken Link
 
-Scenario: validate Upload And Download Feature
+  Scenario: validate Upload And Download Feature
     When User Navigates to Home Page and select Elements
     Then User Select Upload and Download From Elements
     Then User download the file

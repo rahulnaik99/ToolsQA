@@ -1,11 +1,12 @@
 Feature: Test Interaction Functionality
 
-Description: Interaction Functionality
-Scenario: Validate the Sorting Functionality
-When User Navigates to Home Page and select Interactions
-Then User Select Sortable From Interactions
-Then User Sort the List Tab
-Then User Sort the Grid Tab
+  Description: Interaction Functionality
+
+  Scenario: Validate the Sorting Functionality
+    When User Navigates to Home Page and select Interactions
+    Then User Select Sortable From Interactions
+    Then User Sort the List Tab
+    Then User Sort the Grid Tab
 
   Scenario: Validate the Select Functionality
     When User Navigates to Home Page and select Interactions

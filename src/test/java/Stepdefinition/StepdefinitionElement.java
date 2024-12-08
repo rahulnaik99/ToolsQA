@@ -6,6 +6,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import java.awt.*;
 import java.io.IOException;
 
@@ -14,8 +15,8 @@ public class StepdefinitionElement {
     objectManager method;
 
     public StepdefinitionElement() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
 
 
@@ -26,8 +27,8 @@ public class StepdefinitionElement {
     }
 
     @Then("^User Select (.*) From (.*)$")
-    public void enterInfo(String option,String option2) throws IOException, AWTException {
-                method.pageObjectManager().elementPG().selectFromElements(option);
+    public void enterInfo(String option, String option2) throws IOException, AWTException {
+        method.pageObjectManager().elementPG().selectFromElements(option);
 
     }
 
@@ -35,10 +36,12 @@ public class StepdefinitionElement {
     public void userValidatesTheResults() throws AWTException {
         method.pageObjectManager().elementPG().validateTextboxOutput();
     }
+
     @Then("^User Select the Radio Button (.*)$")
     public void userSelectRadioButton(String radio) throws IOException, AWTException {
         method.pageObjectManager().elementPG().radioButton(radio);
     }
+
     @Then("^User Select the Folder and Files$")
     public void userSelectFolderFiles() throws IOException, AWTException {
         method.pageObjectManager().elementPG().checkBox(new String[]{"Downloads"});
@@ -48,6 +51,7 @@ public class StepdefinitionElement {
     public void validatesTheCheckBoxOutput() throws AWTException {
         method.pageObjectManager().elementPG().validateCheckboxOutput("You have selected : downloads wordFile excelFile");
     }
+
     @And("^Validates the Radio Button output for (.*)$")
     public void validatesRadioButtonOutput(String expectedButton) throws AWTException {
         method.pageObjectManager().elementPG().radioButtonValidation(expectedButton);
@@ -67,12 +71,12 @@ public class StepdefinitionElement {
 
     @Then("User Add a New Record")
     public void userAddANewRecord() throws IOException, AWTException {
-        method.pageObjectManager().elementPG().addDateToTable("test","test","test@bdd.com","21","21121","Automation");
+        method.pageObjectManager().elementPG().addDateToTable("test", "test", "test@bdd.com", "21", "21121", "Automation");
     }
 
     @Then("User edit an Existing Record")
     public void userEditAnExistingRecord() throws IOException, AWTException {
-        method.pageObjectManager().elementPG().editTable("Cierra","","test@bdd.com","","","");
+        method.pageObjectManager().elementPG().editTable("Cierra", "", "test@bdd.com", "", "", "");
     }
 
     @Then("USer Delete the Record")
@@ -100,6 +104,7 @@ public class StepdefinitionElement {
     public void userVerifyDoubleClickButton() throws AWTException {
         method.pageObjectManager().elementPG().verifydoubleClick("double");
     }
+
     @When("^User Verify right click Button$")
     public void userVerifyRightClickButton() throws AWTException {
         method.pageObjectManager().elementPG().verifyRightClick();

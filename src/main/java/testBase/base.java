@@ -1,4 +1,5 @@
 package testBase;
+
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -10,6 +11,7 @@ import java.time.Duration;
 public class base {
 
     public static WebDriver driver;
+
     public WebDriver initializeDriver() throws AWTException {
         if (driver == null) {
             // Ensure the path to chromedriver is correct

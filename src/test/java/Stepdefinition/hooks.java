@@ -1,4 +1,5 @@
 package Stepdefinition;
+
 import commonMethods.objectManager;
 import org.junit.After;
 import org.openqa.selenium.WebDriver;
@@ -10,12 +11,12 @@ public class hooks {
     objectManager method;
 
     public hooks() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
+
     @After
-    public void close()
-    {
+    public void close() {
         driver.quit();
     }
 }

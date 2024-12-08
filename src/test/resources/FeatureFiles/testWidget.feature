@@ -1,10 +1,11 @@
 Feature: Test Widgets
 
-Description: testing Widgets
-Scenario: Validate the Widgets Functionality
-When User Select the Widgets From the Homepage
-Then User Select Accordian From Widgets
-Then User Header and Validate the Text
+  Description: testing Widgets
+
+  Scenario: Validate the Widgets Functionality
+    When User Select the Widgets From the Homepage
+    Then User Select Accordian From Widgets
+    Then User Header and Validate the Text
 
 
   Scenario: Validate the Auto complete field Functionality

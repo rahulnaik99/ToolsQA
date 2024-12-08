@@ -3,6 +3,7 @@ package Stepdefinition;
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
+
 import java.awt.*;
 
 
@@ -11,9 +12,10 @@ public class StepdefinitionInteraction {
     objectManager method;
 
     public StepdefinitionInteraction() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
+
     @Then("User Sort the List Tab")
     public void userSortTheListTab() {
     }
@@ -30,7 +32,6 @@ public class StepdefinitionInteraction {
     @Then("User Drag and drop in Simple Tab")
     public void userDragAndDropInSimpleTab() {
     }
-
 
 
     @Then("User Drag and drop in Prevent Propogation Tab")

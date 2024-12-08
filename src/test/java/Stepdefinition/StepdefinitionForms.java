@@ -3,24 +3,25 @@ package Stepdefinition;
 import commonMethods.objectManager;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StepdefinitionForms  {
+public class StepdefinitionForms {
     WebDriver driver;
     objectManager method;
 
     public StepdefinitionForms() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
 
 
     @When("^User Enter the information in the PracticeForm and Submit$")
     public void practiceForm() throws IOException, AWTException {
-        Map<String,String> data = new HashMap<>();
+        Map<String, String> data = new HashMap<>();
         data.put("firstName", "John");
         data.put("lastName", "Doe");
         data.put("email", "john.doe@example.com");
@@ -37,7 +38,6 @@ public class StepdefinitionForms  {
         data.put("city", "Delhi");
         method.pageObjectManager().formPG().fillPracticeForm(data);
     }
-
 
 
 }

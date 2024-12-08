@@ -2,16 +2,14 @@ package commonMethods;
 
 import org.openqa.selenium.WebDriver;
 import testBase.base;
-
 import java.awt.*;
-
 public class objectManager {
     WebDriver driver;
-    objectManager method;
+    base base;
 
     public objectManager() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        base= new base();
+        driver= base.initializeDriver();
     }
     public classObjectManager classObjectManager() throws AWTException {
         return new classObjectManager();

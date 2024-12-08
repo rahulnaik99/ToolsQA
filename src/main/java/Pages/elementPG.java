@@ -1,6 +1,7 @@
 package Pages;
 
 //import io.cucumber.java.en_old.Ac;
+
 import commonMethods.objectManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
@@ -9,7 +10,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
-        import java.awt.*;
+import java.awt.*;
 import java.io.File;
 import java.io.IOException;
 import java.time.Duration;
@@ -21,8 +22,8 @@ public class elementPG {
     objectManager method;
 
     public elementPG() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
 
     By outputString = By.cssSelector("div[class='display-result mt-4']");
@@ -53,13 +54,13 @@ public class elementPG {
     By wordFlieSelect = By.cssSelector("input#tree-node-wordFile + .rct-checkbox");
     By excelSelect = By.cssSelector("input#tree-node-excelFile + .rct-checkbox");
     By addButton = By.id("addNewRecordButton");
-    By tableFirstName= By.id("firstName");
-    By tableLastName= By.id("lastName");
-    By tableEmail= By.id("userEmail");
-    By tableAge= By.id("age");
-    By tableSalary= By.id("salary");
-    By tableDepartment= By.id("department");
-    By tableSubmit= By.id("submit");
+    By tableFirstName = By.id("firstName");
+    By tableLastName = By.id("lastName");
+    By tableEmail = By.id("userEmail");
+    By tableAge = By.id("age");
+    By tableSalary = By.id("salary");
+    By tableDepartment = By.id("department");
+    By tableSubmit = By.id("submit");
     By seachTable = By.cssSelector("input[id='searchBox']");
 
     String Fullname = "Rahul Naik";
@@ -68,7 +69,7 @@ public class elementPG {
     String stringPermanentAddress = "67 RD Rajaji Nagar";
 
     public void enterInfoTextBox() throws IOException, AWTException {
-        
+
         method.commonMethods().enter(fullName, Fullname);
         method.commonMethods().enter(email, stringEmail);
         method.commonMethods().enter(currentAddress, stringCurrentAddress);
@@ -155,79 +156,82 @@ public class elementPG {
         method.commonMethods().fetch(outputString);
 
     }
+
     public void radioButtonValidation(String button) throws AWTException {
-        By radioButtonOutput  = By.cssSelector("p[class='mt-3']");
+        By radioButtonOutput = By.cssSelector("p[class='mt-3']");
         String[] parts = method.commonMethods().fetch(radioButtonOutput).split(" ");
         System.out.printf(parts[3]);
-        Assert.assertTrue("Pass",parts[3].equalsIgnoreCase(button));
+        Assert.assertTrue("Pass", parts[3].equalsIgnoreCase(button));
     }
 
     public void selectFromElements(String options) throws IOException, AWTException {
-        By elementOption = By.xpath("//span[text()='"+options+"']");
+        By elementOption = By.xpath("//span[text()='" + options + "']");
         method.commonMethods().click(elementOption);
     }
+
     public void radioButton(String button) throws IOException, AWTException {
-        By radioButton  = By.xpath("//label[@for='"+button+"Radio']");
+        By radioButton = By.xpath("//label[@for='" + button + "Radio']");
         method.commonMethods().click(radioButton);
         method.commonMethods().checkRadioButton(radioButton);
     }
-        public void nowOfRowInTable(){
-            By rowsNo = By.cssSelector("div[class='rt-tr-group']");
-            List<WebElement> rows = driver.findElements(rowsNo);
-            Assert.assertFalse("Table is Empty", rows.isEmpty());
-            System.out.printf(String.valueOf(rows.size()));
 
+    public void nowOfRowInTable() {
+        By rowsNo = By.cssSelector("div[class='rt-tr-group']");
+        List<WebElement> rows = driver.findElements(rowsNo);
+        Assert.assertFalse("Table is Empty", rows.isEmpty());
+        System.out.printf(String.valueOf(rows.size()));
+
+    }
+
+    public void addDateToTable(String name, String lastname, String email, String age, String salary, String department) throws IOException, AWTException {
+        By rowsNo = By.cssSelector("div[class='rt-tr-group']");
+        List<WebElement> rows = driver.findElements(rowsNo);
+
+
+        method.commonMethods().click(addButton);
+        method.commonMethods().enter(tableFirstName, name);
+        method.commonMethods().enter(tableLastName, lastname);
+        method.commonMethods().enter(tableEmail, email);
+        method.commonMethods().enter(tableDepartment, department);
+        method.commonMethods().enter(tableAge, age);
+        method.commonMethods().enter(tableSalary, salary);
+        method.commonMethods().click(tableSubmit);
+
+
+    }
+
+    public void editTable(String name, String lastname, String email, String age, String salary, String department) throws IOException, AWTException {
+        By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Edit']");
+        By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Edit']");
+        try {
+            method.commonMethods().click(editPathOdd);
+        } catch (Exception e) {
+            method.commonMethods().click(editPathEven);
         }
-        public void addDateToTable(String name,String lastname,String email,String age,String salary,String department) throws IOException, AWTException {
-            By rowsNo = By.cssSelector("div[class='rt-tr-group']");
-            List<WebElement> rows = driver.findElements(rowsNo);
+        method.commonMethods().enter(tableFirstName, name);
+        method.commonMethods().enter(tableLastName, lastname);
+        method.commonMethods().enter(tableEmail, email);
+        method.commonMethods().enter(tableDepartment, department);
+        method.commonMethods().enter(tableAge, age);
+        method.commonMethods().enter(tableSalary, salary);
+        method.commonMethods().click(tableSubmit);
+        method.commonMethods().click(tableSubmit);
 
+    }
 
-           method.commonMethods().click(addButton);
-           method.commonMethods().enter(tableFirstName,name);
-           method.commonMethods().enter(tableLastName,lastname);
-           method.commonMethods().enter(tableEmail,email);
-           method.commonMethods().enter(tableDepartment,department);
-           method.commonMethods().enter(tableAge,age);
-           method.commonMethods().enter(tableSalary,salary);
-           method.commonMethods().click(tableSubmit);
-
-
-
+    public void tableRowDelete(String name) throws IOException, AWTException {
+        By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Delete']");
+        By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Delete']");
+        try {
+            method.commonMethods().click(editPathOdd);
+        } catch (Exception e) {
+            method.commonMethods().click(editPathEven);
         }
-        public void editTable(String name,String lastname,String email,String age,String salary,String department) throws IOException, AWTException {
-            By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Edit']");
-            By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Edit']");
-            try{
-                method.commonMethods().click(editPathOdd);
-            }
-            catch (Exception e){
-                method.commonMethods().click(editPathEven);
-            }
-                method.commonMethods().enter(tableFirstName, name);
-                method.commonMethods().enter(tableLastName, lastname);
-                method.commonMethods().enter(tableEmail, email);
-                method.commonMethods().enter(tableDepartment, department);
-                method.commonMethods().enter(tableAge, age);
-                method.commonMethods().enter(tableSalary, salary);
-                method.commonMethods().click(tableSubmit);
-                method.commonMethods().click(tableSubmit);
-
-        }
-        public void tableRowDelete(String name) throws IOException, AWTException {
-            By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Delete']");
-            By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Delete']");
-            try{
-                method.commonMethods().click(editPathOdd);
-            }
-            catch (Exception e){
-                method.commonMethods().click(editPathEven);
-            }
-        }
+    }
 
     public void tableSearch(String name) throws IOException, AWTException {
 
-        method.commonMethods().enter(seachTable,name);
+        method.commonMethods().enter(seachTable, name);
         By editPathOdd = By.xpath("//div[(text()='" + name + "')]");
         String searchResult = method.commonMethods().fetch(editPathOdd);
         Assert.assertTrue(name.equalsIgnoreCase(searchResult));
@@ -235,7 +239,7 @@ public class elementPG {
     }
 
     public void tableSort(String sortBy) throws IOException, AWTException {
-        By sort = By.xpath("//div[text()='"+sortBy+"']");
+        By sort = By.xpath("//div[text()='" + sortBy + "']");
         method.commonMethods().click(sort);
 
 
@@ -243,7 +247,7 @@ public class elementPG {
 
     public void verifydoubleClick(String aDouble) throws AWTException {
         By doubleClicks = By.id("doubleClickBtn");
-        By doubleClickOutput= By.id("doubleClickMessage");
+        By doubleClickOutput = By.id("doubleClickMessage");
         method.commonMethods().scrollToElement(doubleClicks);
         method.classObjectManager().actions().doubleClick(method.classObjectManager().webElement(doubleClicks)).perform();
         Assert.assertTrue(method.commonMethods().fetch(doubleClickOutput).equalsIgnoreCase("You have done a double click"));
@@ -252,14 +256,15 @@ public class elementPG {
 
     public void verifyRightClick() throws AWTException {
         By rightClicks = By.xpath("//*[text()='Right Click Me']");
-        By rightClickOutput= By.id("rightClickMessage");
+        By rightClickOutput = By.id("rightClickMessage");
         method.commonMethods().scrollToElement(rightClicks);
         method.classObjectManager().actions().contextClick(method.classObjectManager().webElement(rightClicks)).perform();
         Assert.assertTrue(method.commonMethods().fetch(rightClickOutput).equalsIgnoreCase("You have done a right click"));
     }
+
     public void verifyClickMe() throws AWTException {
         By dynamicClick = By.xpath("//*[text()='Click Me']");
-        By dynamicClickOutput= By.id("dynamicClickMessage");
+        By dynamicClickOutput = By.id("dynamicClickMessage");
         method.commonMethods().scrollToElement(dynamicClick);
         method.classObjectManager().actions().click(method.classObjectManager().webElement(dynamicClick)).perform();
         Assert.assertTrue(method.commonMethods().fetch(dynamicClickOutput).equalsIgnoreCase("You have done a dynamic click"));
@@ -276,12 +281,12 @@ public class elementPG {
 
         System.out.printf(method.commonMethods().linkChecker(Element));
 
-        }
+    }
 
 
     public void downLoad(By elementDownload) throws AWTException {
         method.classObjectManager().webElement(elementDownload).click();
-        String downloadPath = "C:\\Users\\"+System.getProperty("user.name")+"\\Downloads\\sampleFile.jpeg";
+        String downloadPath = "C:\\Users\\" + System.getProperty("user.name") + "\\Downloads\\sampleFile.jpeg";
         File downloadFile = new File(downloadPath);
         Assert.assertTrue(downloadFile.exists());
 
@@ -289,10 +294,10 @@ public class elementPG {
     }
 
     public void upLoad(By elementUpload) throws AWTException {
-        method.classObjectManager().webElement(elementUpload).sendKeys("C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
+        method.classObjectManager().webElement(elementUpload).sendKeys("C:\\Users\\" + System.getProperty("user.name") + "\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
     }
 
-    public void buttonValidate(int  duration) throws AWTException {
+    public void buttonValidate(int duration) throws AWTException {
         By beforeButton = By.id("enableAfter");
         By buttonColor = By.id("colorChange");
         Assert.assertFalse(method.commonMethods().isEnabled(beforeButton));

@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="16.19">
-    <testcase classname="Test Forms" name="Validate the Textbox Functionality" time="16.02">
-        <system-out><![CDATA[When User Navigates to Home Page and select Forms...........................passed
-Then User Select Practice Form From Forms...................................passed
-Then User Enter the information in the PracticeForm and Submit..............passed
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="10.852">
+    <testcase classname="Test Alerts, Frame &amp; Windows" name="Validate the Dialog Boxes" time="10.674">
+        <system-out><![CDATA[When User Navigates to Home Page and select Alerts, Frame & Windows.........passed
+Then User Select Modal Dialogs From Alerts, Frame & Windows.................passed
+Then User select Small Modal................................................passed
+Then User select Large Modal................................................passed
 ]]></system-out>
     </testcase>
 </testsuite>

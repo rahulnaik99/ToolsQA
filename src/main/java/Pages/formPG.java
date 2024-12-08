@@ -3,6 +3,7 @@ package Pages;
 import commonMethods.objectManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+
 import java.awt.*;
 import java.io.IOException;
 import java.util.Map;
@@ -12,9 +13,10 @@ public class formPG {
     objectManager method;
 
     public formPG() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
+
     By firstName = By.cssSelector("#firstName");
     By lastName = By.cssSelector("#lastName");
     By email = By.cssSelector("#userEmail");
@@ -36,28 +38,28 @@ public class formPG {
     By year = By.cssSelector("Select[class$='year-select']");
 
 
-    public void fillPracticeForm(Map<String,String> data) throws IOException, AWTException {
-        method.commonMethods().enter(firstName,data.get("firstName"));
-        method.commonMethods().enter(lastName,data.get("lastName"));
+    public void fillPracticeForm(Map<String, String> data) throws IOException, AWTException {
+        method.commonMethods().enter(firstName, data.get("firstName"));
+        method.commonMethods().enter(lastName, data.get("lastName"));
         method.commonMethods().enter(email, data.get("email"));
         method.commonMethods().click(By.cssSelector("label[for$='gender-radio-1']"));
         method.commonMethods().enter(mobileNumber, data.get("mobileNumber"));
         method.commonMethods().click(dob);
         method.classObjectManager().selectElement(method.classObjectManager().webElement(year)).selectByVisibleText(data.get("dobYear"));
         method.classObjectManager().selectElement(method.classObjectManager().webElement(month)).selectByVisibleText(data.get("dobMonth"));
-        method.commonMethods().click(By.xpath("(//div[text()='"+data.get("dobdate")+"'])[1]"));
+        method.commonMethods().click(By.xpath("(//div[text()='" + data.get("dobdate") + "'])[1]"));
         method.commonMethods().enter(subjects, data.get("subjects"));
         method.commonMethods().robotClassEnter();
         method.classObjectManager().webElement(genderMale).click();
         method.classObjectManager().webElement(hobbiesCheckbox1).click();
         method.classObjectManager().webElement(hobbiesCheckbox2).click();
         method.classObjectManager().webElement(hobbiesCheckbox3).click();
-        method.commonMethods().enter(uploadPicture,"C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\screenshot.png");
-        method.commonMethods().enter(currentAddress,data.get("currentAddress"));
+        method.commonMethods().enter(uploadPicture, "C:\\Users\\" + System.getProperty("user.name") + "\\IdeaProjects\\ToolsQA\\screenshot.png");
+        method.commonMethods().enter(currentAddress, data.get("currentAddress"));
         method.commonMethods().click(state);
-        method.commonMethods().click(By.xpath("//div[text()='"+data.get("state")+"']"));
+        method.commonMethods().click(By.xpath("//div[text()='" + data.get("state") + "']"));
         method.commonMethods().click(city);
-        method.commonMethods().click(By.xpath("//div[text()='"+data.get("city")+"']"));
+        method.commonMethods().click(By.xpath("//div[text()='" + data.get("city") + "']"));
         method.commonMethods().click(submit);
         method.commonMethods().hightElement(By.cssSelector("div[class='modal-body']"));
         method.commonMethods().click(By.id("closeLargeModal"));

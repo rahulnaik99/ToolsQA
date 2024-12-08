@@ -13,16 +13,19 @@ public class classObjectManager {
     objectManager method;
 
     public classObjectManager() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
+
     public WebElement webElement(By element) {
         return driver.findElement(element);
     }
+
     public Select selectElement(WebElement element) {
         return new Select(element);
 
     }
+
     public Actions actions() {
         return new Actions(driver);
     }

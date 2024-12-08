@@ -10,8 +10,8 @@ public class interactionsPG {
     objectManager method;
 
     public interactionsPG() throws AWTException {
-        method=new objectManager();
-        driver= method.base().initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
 
 }
