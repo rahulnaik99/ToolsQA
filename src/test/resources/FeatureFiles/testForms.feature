@@ -1,7 +1,6 @@
-Feature: Test Elements functions
-
-  Description: testing Forms
+Feature: Test Forms
+Description: testing Forms
 Scenario: Validate the Textbox Functionality
-When User Select the Forms From the Homepage
-Then User Select Practice Form From Elements
+When User Navigates to Home Page and select Forms
+Then User Select Practice Form From Forms
 Then User Enter the information in the PracticeForm and Submit
