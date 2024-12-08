@@ -1,7 +1,7 @@
 package Pages;
 
 //import io.cucumber.java.en_old.Ac;
-import commonMethods.pageObjectManager;
+import commonMethods.objectManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
@@ -18,11 +18,11 @@ import java.util.List;
 
 public class elementPG {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public elementPG() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
 
     By outputString = By.cssSelector("div[class='display-result mt-4']");
@@ -67,82 +67,82 @@ public class elementPG {
     String stringCurrentAddress = "23 Street Banglore";
     String stringPermanentAddress = "67 RD Rajaji Nagar";
 
-    public boolean enterInfoTextBox() throws IOException, AWTException {
+    public void enterInfoTextBox() throws IOException, AWTException {
         
-        pg.methods().enter(fullName, Fullname);
-        pg.methods().enter(email, stringEmail);
-        pg.methods().enter(currentAddress, stringCurrentAddress);
-        pg.methods().enter(permanentAddress, stringPermanentAddress);
-        pg.methods().scrollToElement(submit);
+        method.commonMethods().enter(fullName, Fullname);
+        method.commonMethods().enter(email, stringEmail);
+        method.commonMethods().enter(currentAddress, stringCurrentAddress);
+        method.commonMethods().enter(permanentAddress, stringPermanentAddress);
+        method.commonMethods().scrollToElement(submit);
 
-        return pg.methods().click(submit);
+        method.commonMethods().click(submit);
     }
 
     public void selectMenu(String option) throws IOException, AWTException {
-        pg.methods().homePage();
+        method.commonMethods().homePage();
         By optionSelect = By.xpath("//h5[text()='" + option + "']");
-        pg.methods().click(optionSelect);
+        method.commonMethods().click(optionSelect);
 
     }
 
     public void validateTextboxOutput() throws AWTException {
-        if (pg.methods().fetch(fullNameOutput).equalsIgnoreCase(Fullname) && pg.methods().fetch(emailOutput).equalsIgnoreCase(stringEmail) && pg.methods().fetch(currentAddressOutput).equalsIgnoreCase(stringCurrentAddress)) {
-            pg.methods().fetch(permanentAddressOutput);
+        if (method.commonMethods().fetch(fullNameOutput).equalsIgnoreCase(Fullname) && method.commonMethods().fetch(emailOutput).equalsIgnoreCase(stringEmail) && method.commonMethods().fetch(currentAddressOutput).equalsIgnoreCase(stringCurrentAddress)) {
+            method.commonMethods().fetch(permanentAddressOutput);
         }
     }
 
     public void checkBox(String[] selectingFolderFiles) throws IOException, AWTException {
-        pg.methods().click(expandAll);
+        method.commonMethods().click(expandAll);
         for (String folderFile : selectingFolderFiles) {
             switch (folderFile) {
                 case "Desktop":
-                    pg.methods().click(deskTopSelect);
+                    method.commonMethods().click(deskTopSelect);
                     break;
                 case "Notes":
-                    pg.methods().click(notesSelect);
+                    method.commonMethods().click(notesSelect);
                     break;
                 case "Commands":
-                    pg.methods().click(commandsSelect);
+                    method.commonMethods().click(commandsSelect);
                     break;
                 case "Document":
-                    pg.methods().click(documentSelect);
+                    method.commonMethods().click(documentSelect);
                     break;
                 case "WorkSpace":
-                    pg.methods().click(workspaceSelect);
+                    method.commonMethods().click(workspaceSelect);
                     break;
                 case "React":
-                    pg.methods().click(reactSelect);
+                    method.commonMethods().click(reactSelect);
                     break;
                 case "Angular":
-                    pg.methods().click(angularSelect);
+                    method.commonMethods().click(angularSelect);
                     break;
                 case "Veu":
-                    pg.methods().click(veuSelect);
+                    method.commonMethods().click(veuSelect);
                     break;
                 case "Office":
-                    pg.methods().click(officeSelect);
+                    method.commonMethods().click(officeSelect);
                     break;
                 case "Public":
-                    pg.methods().click(publicSelect);
+                    method.commonMethods().click(publicSelect);
                     break;
                 case "Private":
-                    pg.methods().click(privateSelect);
+                    method.commonMethods().click(privateSelect);
                     break;
 
                 case "Classified":
-                    pg.methods().click(classifiedSelect);
+                    method.commonMethods().click(classifiedSelect);
                     break;
                 case "General":
-                    pg.methods().click(generalSelect);
+                    method.commonMethods().click(generalSelect);
                     break;
                 case "Downloads":
-                    pg.methods().click(downloadsSelect);
+                    method.commonMethods().click(downloadsSelect);
                     break;
                 case "Word File":
-                    pg.methods().click(wordFlieSelect);
+                    method.commonMethods().click(wordFlieSelect);
                     break;
                 case "Excel File":
-                    pg.methods().click(excelSelect);
+                    method.commonMethods().click(excelSelect);
                     break;
 
             }
@@ -150,26 +150,26 @@ public class elementPG {
 
     }
 
-    public void validateCheckboxOutput(String folderFile) throws AWTException {
-        pg.methods().scrollToElement(outputString);
-        pg.methods().fetch(outputString);
+    public void validateCheckboxOutput(String s) throws AWTException {
+        method.commonMethods().scrollToElement(outputString);
+        method.commonMethods().fetch(outputString);
 
     }
     public void radioButtonValidation(String button) throws AWTException {
         By radioButtonOutput  = By.cssSelector("p[class='mt-3']");
-        String[] parts = pg.methods().fetch(radioButtonOutput).split(" ");
+        String[] parts = method.commonMethods().fetch(radioButtonOutput).split(" ");
         System.out.printf(parts[3]);
         Assert.assertTrue("Pass",parts[3].equalsIgnoreCase(button));
     }
 
     public void selectFromElements(String options) throws IOException, AWTException {
         By elementOption = By.xpath("//span[text()='"+options+"']");
-        pg.methods().click(elementOption);
+        method.commonMethods().click(elementOption);
     }
     public void radioButton(String button) throws IOException, AWTException {
         By radioButton  = By.xpath("//label[@for='"+button+"Radio']");
-        pg.methods().click(radioButton);
-        pg.methods().checkRadioButton(radioButton);
+        method.commonMethods().click(radioButton);
+        method.commonMethods().checkRadioButton(radioButton);
     }
         public void nowOfRowInTable(){
             By rowsNo = By.cssSelector("div[class='rt-tr-group']");
@@ -183,14 +183,14 @@ public class elementPG {
             List<WebElement> rows = driver.findElements(rowsNo);
 
 
-           pg.methods().click(addButton);
-           pg.methods().enter(tableFirstName,name);
-           pg.methods().enter(tableLastName,lastname);
-           pg.methods().enter(tableEmail,email);
-           pg.methods().enter(tableDepartment,department);
-           pg.methods().enter(tableAge,age);
-           pg.methods().enter(tableSalary,salary);
-           pg.methods().click(tableSubmit);
+           method.commonMethods().click(addButton);
+           method.commonMethods().enter(tableFirstName,name);
+           method.commonMethods().enter(tableLastName,lastname);
+           method.commonMethods().enter(tableEmail,email);
+           method.commonMethods().enter(tableDepartment,department);
+           method.commonMethods().enter(tableAge,age);
+           method.commonMethods().enter(tableSalary,salary);
+           method.commonMethods().click(tableSubmit);
 
 
 
@@ -199,44 +199,44 @@ public class elementPG {
             By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Edit']");
             By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Edit']");
             try{
-                pg.methods().click(editPathOdd);
+                method.commonMethods().click(editPathOdd);
             }
             catch (Exception e){
-                pg.methods().click(editPathEven);
+                method.commonMethods().click(editPathEven);
             }
-                pg.methods().enter(tableFirstName, name);
-                pg.methods().enter(tableLastName, lastname);
-                pg.methods().enter(tableEmail, email);
-                pg.methods().enter(tableDepartment, department);
-                pg.methods().enter(tableAge, age);
-                pg.methods().enter(tableSalary, salary);
-                pg.methods().click(tableSubmit);
-                pg.methods().click(tableSubmit);
+                method.commonMethods().enter(tableFirstName, name);
+                method.commonMethods().enter(tableLastName, lastname);
+                method.commonMethods().enter(tableEmail, email);
+                method.commonMethods().enter(tableDepartment, department);
+                method.commonMethods().enter(tableAge, age);
+                method.commonMethods().enter(tableSalary, salary);
+                method.commonMethods().click(tableSubmit);
+                method.commonMethods().click(tableSubmit);
 
         }
         public void tableRowDelete(String name) throws IOException, AWTException {
             By editPathOdd = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -odd')]//span[@title='Delete']");
             By editPathEven = By.xpath("//div[(text()='" + name + "')]/ancestor::div[(@class='rt-tr -even')]//span[@title='Delete']");
             try{
-                pg.methods().click(editPathOdd);
+                method.commonMethods().click(editPathOdd);
             }
             catch (Exception e){
-                pg.methods().click(editPathEven);
+                method.commonMethods().click(editPathEven);
             }
         }
 
     public void tableSearch(String name) throws IOException, AWTException {
 
-        pg.methods().enter(seachTable,name);
+        method.commonMethods().enter(seachTable,name);
         By editPathOdd = By.xpath("//div[(text()='" + name + "')]");
-        String searchResult = pg.methods().fetch(editPathOdd);
+        String searchResult = method.commonMethods().fetch(editPathOdd);
         Assert.assertTrue(name.equalsIgnoreCase(searchResult));
 
     }
 
     public void tableSort(String sortBy) throws IOException, AWTException {
         By sort = By.xpath("//div[text()='"+sortBy+"']");
-        pg.methods().click(sort);
+        method.commonMethods().click(sort);
 
 
     }
@@ -244,43 +244,43 @@ public class elementPG {
     public void verifydoubleClick(String aDouble) throws AWTException {
         By doubleClicks = By.id("doubleClickBtn");
         By doubleClickOutput= By.id("doubleClickMessage");
-        pg.methods().scrollToElement(doubleClicks);
-        pg.objectManager().actions().doubleClick(pg.objectManager().webElement(doubleClicks)).perform();
-        Assert.assertTrue(pg.methods().fetch(doubleClickOutput).equalsIgnoreCase("You have done a double click"));
+        method.commonMethods().scrollToElement(doubleClicks);
+        method.classObjectManager().actions().doubleClick(method.classObjectManager().webElement(doubleClicks)).perform();
+        Assert.assertTrue(method.commonMethods().fetch(doubleClickOutput).equalsIgnoreCase("You have done a double click"));
 
     }
 
     public void verifyRightClick() throws AWTException {
         By rightClicks = By.xpath("//*[text()='Right Click Me']");
         By rightClickOutput= By.id("rightClickMessage");
-        pg.methods().scrollToElement(rightClicks);
-        pg.objectManager().actions().contextClick(pg.objectManager().webElement(rightClicks)).perform();
-        Assert.assertTrue(pg.methods().fetch(rightClickOutput).equalsIgnoreCase("You have done a right click"));
+        method.commonMethods().scrollToElement(rightClicks);
+        method.classObjectManager().actions().contextClick(method.classObjectManager().webElement(rightClicks)).perform();
+        Assert.assertTrue(method.commonMethods().fetch(rightClickOutput).equalsIgnoreCase("You have done a right click"));
     }
     public void verifyClickMe() throws AWTException {
         By dynamicClick = By.xpath("//*[text()='Click Me']");
         By dynamicClickOutput= By.id("dynamicClickMessage");
-        pg.methods().scrollToElement(dynamicClick);
-        pg.objectManager().actions().click(pg.objectManager().webElement(dynamicClick)).perform();
-        Assert.assertTrue(pg.methods().fetch(dynamicClickOutput).equalsIgnoreCase("You have done a dynamic click"));
+        method.commonMethods().scrollToElement(dynamicClick);
+        method.classObjectManager().actions().click(method.classObjectManager().webElement(dynamicClick)).perform();
+        Assert.assertTrue(method.commonMethods().fetch(dynamicClickOutput).equalsIgnoreCase("You have done a dynamic click"));
     }
 
     public void nextWindowValidation() throws IOException, AWTException {
         By link = By.cssSelector("a#simpleLink");
-        pg.methods().click(link);
-        pg.methods().handleMultplieWindow();
+        method.commonMethods().click(link);
+        method.commonMethods().handleMultplieWindow();
 
     }
 
     public void apiValidation(By Element) throws AWTException {
 
-        System.out.printf(pg.methods().linkChecker(Element));
+        System.out.printf(method.commonMethods().linkChecker(Element));
 
         }
 
 
     public void downLoad(By elementDownload) throws AWTException {
-        pg.objectManager().webElement(elementDownload).click();
+        method.classObjectManager().webElement(elementDownload).click();
         String downloadPath = "C:\\Users\\"+System.getProperty("user.name")+"\\Downloads\\sampleFile.jpeg";
         File downloadFile = new File(downloadPath);
         Assert.assertTrue(downloadFile.exists());
@@ -289,18 +289,18 @@ public class elementPG {
     }
 
     public void upLoad(By elementUpload) throws AWTException {
-        pg.objectManager().webElement(elementUpload).sendKeys("C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
+        method.classObjectManager().webElement(elementUpload).sendKeys("C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
     }
 
     public void buttonValidate(int  duration) throws AWTException {
         By beforeButton = By.id("enableAfter");
         By buttonColor = By.id("colorChange");
-        Assert.assertFalse(pg.methods().isEnabled(beforeButton));
+        Assert.assertFalse(method.commonMethods().isEnabled(beforeButton));
         String button = driver.findElement(buttonColor).getCssValue("color");
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
         wait.until(ExpectedConditions.elementToBeClickable(beforeButton));
         Assert.assertFalse(driver.findElement(buttonColor).getCssValue("color").equalsIgnoreCase(button));
-        Assert.assertTrue(pg.methods().isEnabled(beforeButton));
+        Assert.assertTrue(method.commonMethods().isEnabled(beforeButton));
 
     }
 }

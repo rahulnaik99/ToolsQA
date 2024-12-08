@@ -1,23 +1,20 @@
 package Stepdefinition;
 
-import commonMethods.pageObjectManager;
-import io.cucumber.java.en.Then;
+import commonMethods.objectManager;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.WebDriver;
-
 import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class StepdefinitionForms  {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public StepdefinitionForms() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
 
 
@@ -38,7 +35,7 @@ public class StepdefinitionForms  {
         data.put("currentAddress", "1234 Elm Street, Springfield");
         data.put("state", "NCR");
         data.put("city", "Delhi");
-        pg.formPG().fillPracticeForm(data);
+        method.pageObjectManager().formPG().fillPracticeForm(data);
     }
 
 

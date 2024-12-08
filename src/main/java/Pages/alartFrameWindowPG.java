@@ -1,6 +1,6 @@
 package Pages;
 
-import commonMethods.pageObjectManager;
+import commonMethods.objectManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 
@@ -9,16 +9,16 @@ import java.io.IOException;
 
 public class alartFrameWindowPG {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public alartFrameWindowPG() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
     public void newTab(By Tab) throws IOException, AWTException {
 
-        pg.methods().click(Tab);
-        pg.methods().switchToTab();
+        method.commonMethods().click(Tab);
+        method.commonMethods().switchToTab();
 
     }
 }

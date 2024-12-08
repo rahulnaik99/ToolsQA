@@ -1,10 +1,8 @@
 package commonMethods;
 
-
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xslf.usermodel.*;
 import org.openqa.selenium.*;
-
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
 import java.io.*;
@@ -19,14 +17,14 @@ import java.awt.*;
 
 
 public class commonMethods {
-    WebDriver driver;
     private static XMLSlideShow ppt;
     public static String testEvidence;
-    pageObjectManager pg;
+    WebDriver driver;
+    objectManager method;
 
     public commonMethods() throws AWTException {
-        pg = new pageObjectManager();
-        driver = pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
 
     public boolean click(By element) throws IOException, AWTException {
@@ -71,8 +69,8 @@ public class commonMethods {
         driver.get("https://demoqa.com/");
     }
 
-    public boolean checkRadioButton(By radioButton) throws AWTException, IOException {
-        return driver.findElement(radioButton).isSelected();
+    public void checkRadioButton(By radioButton) {
+        driver.findElement(radioButton).isSelected();
     }
 
         public void handleMultplieWindow () {
@@ -114,13 +112,14 @@ public class commonMethods {
 
         public void hightElement (By element) throws IOException, AWTException {
             JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].style.border='3px solid green'", pg.objectManager().webElement(element));
+            js.executeScript("arguments[0].style.border='3px solid green'", method.classObjectManager().webElement(element));
             addToPPT("Slide");
         }
 
         public void unhightElement (By element) throws AWTException {
-            JavascriptExecutor js = (JavascriptExecutor) driver;
-            js.executeScript("arguments[0].style.border=''", pg.objectManager().webElement(element));
+            JavascriptExecutor js;
+            js = (JavascriptExecutor) driver;
+            js.executeScript("arguments[0].style.border=''", method.classObjectManager().webElement(element));
         }
 
         public void addToPPT (String titleSlide) throws IOException {

@@ -1,21 +1,15 @@
 package Pages;
-
-import commonMethods.commonMethods;
-import org.openqa.selenium.By;
+import commonMethods.objectManager;
 import org.openqa.selenium.WebDriver;
-import testBase.base;
-
 import java.awt.*;
-import java.io.IOException;
 
 public class widgetsPG {
     WebDriver driver;
-    commonMethods methods;
+    objectManager method;
 
     public widgetsPG() throws AWTException {
-        base base = new base();
-        methods = new commonMethods();
-        driver = base.initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
 
 }

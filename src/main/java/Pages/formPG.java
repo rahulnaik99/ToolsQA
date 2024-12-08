@@ -1,6 +1,6 @@
 package Pages;
 
-import commonMethods.pageObjectManager;
+import commonMethods.objectManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import java.awt.*;
@@ -9,11 +9,11 @@ import java.util.Map;
 
 public class formPG {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public formPG() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
     By firstName = By.cssSelector("#firstName");
     By lastName = By.cssSelector("#lastName");
@@ -37,29 +37,29 @@ public class formPG {
 
 
     public void fillPracticeForm(Map<String,String> data) throws IOException, AWTException {
-        pg.methods().enter(firstName,data.get("firstName"));
-        pg.methods().enter(lastName,data.get("lastName"));
-        pg.methods().enter(email, data.get("email"));
-        pg.methods().click(By.cssSelector("label[for$='gender-radio-1']"));
-        pg.methods().enter(mobileNumber, data.get("mobileNumber"));
-        pg.methods().click(dob);
-        pg.objectManager().selectElement(pg.objectManager().webElement(year)).selectByVisibleText(data.get("dobYear"));
-        pg.objectManager().selectElement(pg.objectManager().webElement(month)).selectByVisibleText(data.get("dobMonth"));
-        pg.methods().click(By.xpath("(//div[text()='"+data.get("dobdate")+"'])[1]"));
-        pg.methods().enter(subjects, data.get("subjects"));
-        pg.methods().robotClassEnter();
-        pg.objectManager().webElement(genderMale).click();
-        pg.objectManager().webElement(hobbiesCheckbox1).click();
-        pg.objectManager().webElement(hobbiesCheckbox2).click();
-        pg.objectManager().webElement(hobbiesCheckbox3).click();
-        pg.methods().enter(uploadPicture,"C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\screenshot.png");
-        pg.methods().enter(currentAddress,data.get("currentAddress"));
-        pg.methods().click(state);
-        pg.methods().click(By.xpath("//div[text()='"+data.get("state")+"']"));
-        pg.methods().click(city);
-        pg.methods().click(By.xpath("//div[text()='"+data.get("city")+"']"));
-        pg.methods().click(submit);
-        pg.methods().hightElement(By.cssSelector("div[class='modal-body']"));
-        pg.methods().click(By.id("closeLargeModal"));
+        method.commonMethods().enter(firstName,data.get("firstName"));
+        method.commonMethods().enter(lastName,data.get("lastName"));
+        method.commonMethods().enter(email, data.get("email"));
+        method.commonMethods().click(By.cssSelector("label[for$='gender-radio-1']"));
+        method.commonMethods().enter(mobileNumber, data.get("mobileNumber"));
+        method.commonMethods().click(dob);
+        method.classObjectManager().selectElement(method.classObjectManager().webElement(year)).selectByVisibleText(data.get("dobYear"));
+        method.classObjectManager().selectElement(method.classObjectManager().webElement(month)).selectByVisibleText(data.get("dobMonth"));
+        method.commonMethods().click(By.xpath("(//div[text()='"+data.get("dobdate")+"'])[1]"));
+        method.commonMethods().enter(subjects, data.get("subjects"));
+        method.commonMethods().robotClassEnter();
+        method.classObjectManager().webElement(genderMale).click();
+        method.classObjectManager().webElement(hobbiesCheckbox1).click();
+        method.classObjectManager().webElement(hobbiesCheckbox2).click();
+        method.classObjectManager().webElement(hobbiesCheckbox3).click();
+        method.commonMethods().enter(uploadPicture,"C:\\Users\\"+System.getProperty("user.name")+"\\IdeaProjects\\ToolsQA\\screenshot.png");
+        method.commonMethods().enter(currentAddress,data.get("currentAddress"));
+        method.commonMethods().click(state);
+        method.commonMethods().click(By.xpath("//div[text()='"+data.get("state")+"']"));
+        method.commonMethods().click(city);
+        method.commonMethods().click(By.xpath("//div[text()='"+data.get("city")+"']"));
+        method.commonMethods().click(submit);
+        method.commonMethods().hightElement(By.cssSelector("div[class='modal-body']"));
+        method.commonMethods().click(By.id("closeLargeModal"));
     }
 }

@@ -1,27 +1,27 @@
 package Stepdefinition;
+import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import commonMethods.pageObjectManager;
 import java.awt.*;
 import java.io.IOException;
 
 
 public class StepdefinitionAlertFrameWindows {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public StepdefinitionAlertFrameWindows() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new  objectManager();
+        driver= method.base().initializeDriver();
     }
 
     @When("^User click on the Tab Button$")
     public void newTab() throws IOException, AWTException {
-        pg.alartFrameWindowPG().newTab(By.cssSelector("#tabButton"));
-        pg.alartFrameWindowPG().newTab(By.cssSelector("button[id='windowButton']"));
-        pg.alartFrameWindowPG().newTab(By.id("messageWindowButton"));
+        method.pageObjectManager().alartFrameWindowPG().newTab(By.cssSelector("#tabButton"));
+        method.pageObjectManager().alartFrameWindowPG().newTab(By.cssSelector("button[id='windowButton']"));
+        method.pageObjectManager().alartFrameWindowPG().newTab(By.id("messageWindowButton"));
     }
 
     @When("User click on Alert and Validate")

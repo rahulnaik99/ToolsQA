@@ -3,17 +3,16 @@ package Pages;
 import commonMethods.commonMethods;
 import org.openqa.selenium.WebDriver;
 import testBase.base;
-
+import commonMethods.objectManager;
 import java.awt.*;
 
 public class bookStorePG {
     WebDriver driver;
-    commonMethods methods;
+    objectManager method;
 
     public bookStorePG() throws AWTException {
-        base base = new base();
-        methods = new commonMethods();
-        driver = base.initializeDriver();
+        method = new objectManager();
+        driver = method.base().initializeDriver();
     }
 
 }

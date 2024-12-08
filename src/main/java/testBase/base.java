@@ -9,9 +9,7 @@ import java.time.Duration;
 
 public class base {
 
-    // WebDriver instance should be private
     public static WebDriver driver;
-
     public WebDriver initializeDriver() throws AWTException {
         if (driver == null) {
             // Ensure the path to chromedriver is correct
@@ -19,10 +17,8 @@ public class base {
             driver = new ChromeDriver();
             driver.manage().window().maximize();
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-
             driver.get("https://demoqa.com/");
             return driver;
-
         }
         return driver;
     }

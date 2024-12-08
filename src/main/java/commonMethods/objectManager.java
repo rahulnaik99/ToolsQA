@@ -1,29 +1,29 @@
 package commonMethods;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.support.ui.Select;
+import testBase.base;
 
 import java.awt.*;
 
 public class objectManager {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public objectManager() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
-    public WebElement webElement(By element) {
-        return driver.findElement(element);
+    public classObjectManager classObjectManager() throws AWTException {
+        return new classObjectManager();
     }
-    public Select selectElement(WebElement element) {
-        return new Select(element);
+    public pageObjectManager pageObjectManager() throws AWTException {
+        return new pageObjectManager();
+    }
+    public commonMethods commonMethods() throws AWTException {
+        return new commonMethods();
+    }
+    public base base(){
+        return new base();
 
-    }
-    public Actions actions() {
-        return new Actions(driver);
     }
 }

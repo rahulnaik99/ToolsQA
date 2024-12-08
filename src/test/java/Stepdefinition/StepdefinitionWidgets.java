@@ -1,19 +1,18 @@
 package Stepdefinition;
 
-import commonMethods.pageObjectManager;
+import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
-
 import java.awt.*;
 
 
 public class StepdefinitionWidgets {
     WebDriver driver;
-    pageObjectManager pg;
+    objectManager method;
 
     public StepdefinitionWidgets() throws AWTException {
-        pg=new pageObjectManager();
-        driver= pg.base().initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
     @Then("User Header and Validate the Text")
     public void userHeaderAndValidateTheText() {

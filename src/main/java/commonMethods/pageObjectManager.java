@@ -7,10 +7,10 @@ import java.awt.*;
 
 public class pageObjectManager {
     WebDriver driver;
-    base base;
+    objectManager method;
     public pageObjectManager() throws AWTException {
-        base = new base();
-        driver= base.initializeDriver();
+        method=new objectManager();
+        driver= method.base().initializeDriver();
     }
 
     public alartFrameWindowPG alartFrameWindowPG() throws AWTException {
@@ -31,15 +31,7 @@ public class pageObjectManager {
     public widgetsPG widgetsPG() throws AWTException {
         return new widgetsPG();
     }
-    public base base(){
-        return new base();
 
-    }
-    public objectManager objectManager() throws AWTException {
-        return new objectManager();
-    }
-    public commonMethods methods() throws AWTException {
-        return new commonMethods();
-    }
+
 
 }
