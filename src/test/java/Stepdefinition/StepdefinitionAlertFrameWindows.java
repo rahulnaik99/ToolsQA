@@ -54,12 +54,12 @@ public class StepdefinitionAlertFrameWindows {
 
     }
 
-    @Then("User select Small Modal")
+    @Then("User select Small Modals")
     public void userSelectSmallModal() throws AWTException, IOException {
         method.pageObjectManager().alartFrameWindowPG().smallModal();
     }
 
-    @Then("User select Large Modal")
+    @Then("User select Large Modals")
     public void userSelectLargeModal() throws AWTException, IOException {
         method.pageObjectManager().alartFrameWindowPG().largeModal();
     }

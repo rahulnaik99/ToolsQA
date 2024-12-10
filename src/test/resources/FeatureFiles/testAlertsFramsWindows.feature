@@ -28,8 +28,8 @@ Feature: Test Alerts, Frame & Windows
   Scenario: Validate the Dialog Boxes
     When User Navigates to Home Page and select Alerts, Frame & Windows
     Then User Select Modal Dialogs From Alerts, Frame & Windows
-    Then User select Small Modal
-    Then User select Large Modal
+    Then User select Small Modals
+    Then User select Large Modals
 
 
 

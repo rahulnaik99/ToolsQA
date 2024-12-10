@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="17.841">
-    <testcase classname="Test Widgets" name="Validate the Slider" time="17.626">
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="10.301">
+    <testcase classname="Test Widgets" name="Validate the Slider" time="9.983">
         <system-out><![CDATA[When User Navigates to Home Page and select Widgets.........................passed
 Then User Select Slider From Widgets........................................passed
 Then User Select 40 from the Slider.........................................passed
