@@ -19,15 +19,15 @@ Feature: Test Widgets
 #    Then User Select the Date
 #    Then User Select the Date and Time
 #
-  Scenario: Validate the Slider
-    When User Navigates to Home Page and select Widgets
-    Then User Select Slider From Widgets
-    Then User Select 40 from the Slider
-
-#  Scenario: Validate the Auto complete field Functionality
+#  Scenario: Validate the Slider
 #    When User Navigates to Home Page and select Widgets
-#    Then User Select Tabs From Widgets
-#    Then User Validate the Progress Bar
+#    Then User Select Slider From Widgets
+#    Then User Select 40 from the Slider
+
+  Scenario: Validate the Auto complete field Functionality
+    When User Navigates to Home Page and select Widgets
+    Then User Select Progress Bar From Widgets
+    Then User Validate the Progress Bar
 #
 #  Scenario: Validate the Tab Functionality
 #    When User Navigates to Home Page and select Widgets

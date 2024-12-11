@@ -17,7 +17,8 @@ public class base {
             // Ensure the path to chromedriver is correct
             System.setProperty("webdriver.chrome.driver", "src/main/resources/Drivers/chromedriver.exe");
             driver = new ChromeDriver();
-            driver.manage().window().maximize();
+            org.openqa.selenium.Point leftPosition = new org.openqa.selenium.Point(0, 0); // x = 0, y = 0
+            driver.manage().window().setPosition(leftPosition);
             driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
             driver.get("https://demoqa.com/");
             return driver;

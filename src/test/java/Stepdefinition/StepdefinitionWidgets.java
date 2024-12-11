@@ -3,10 +3,14 @@ package Stepdefinition;
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
 import java.io.IOException;
+import java.util.Objects;
 
 
 public class StepdefinitionWidgets {
@@ -50,20 +54,29 @@ public class StepdefinitionWidgets {
 
     @Then("User Select {int} from the Slider")
     public void userSelectFromTheSlider(int arg0) throws AWTException, IOException {
-        By slider = By.cssSelector("input[type$='range']");
-//        By slider = By.id("slider")
-//       ;
-//        method.commonMethods().hightElement(slider);
-        method.commonMethods().click(slider);
-        int sliderWidth = method.classObjectManager().webElement(slider).getSize().getWidth();
-        int move = sliderWidth/100;
-        method.classObjectManager().actions().clickAndHold(method.classObjectManager().webElement(slider)).moveByOffset(move,0).release().build().perform();
+        By sliders = By.cssSelector("input[id$='sliderValue']");
+
 
 
     }
 
+
+
     @Then("User Validate the Progress Bar")
-    public void userValidateTheProgressBar() {
+    public void userValidateTheProgressBar() throws AWTException, IOException {
+        By startButton = By.id("startStopButton");
+        By progressBar = By.cssSelector("div[class='progress-bar bg-success']");
+
+        method.commonMethods().click(startButton);
+        while (true) {
+            // Get the current progress as a percentage
+            String progressText = method.classObjectManager().webElement(progressBar).getText();
+//            assert progressText != null;
+//            int progressValue = Integer.parseInt(progressText);
+
+            // Print progress to the console
+            System.out.println("Progress: " + progressText + "%");
+        }
     }
 
     @Then("User Validate the Tab")
