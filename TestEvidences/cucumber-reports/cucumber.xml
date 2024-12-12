@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="17.484">
+    <testcase classname="Test Interaction Functionality" name="Validate the Sorting Functionality" time="17.292">
+        <system-out><![CDATA[When User Navigates to Home Page and select Interactions....................passed
+Then User Select Sortable From Interactions.................................passed
+Then User Sort the List Tab.................................................passed
+Then User Sort the Grid Tab.................................................passed
+]]></system-out>
+    </testcase>
+</testsuite>

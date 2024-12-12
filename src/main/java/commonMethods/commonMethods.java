@@ -116,6 +116,11 @@ public class commonMethods {
         js.executeScript("arguments[0].style.border='3px solid green'", method.classObjectManager().webElement(element));
         addToPPT("Slide");
     }
+    public void hightText(By element) throws IOException, AWTException {
+        JavascriptExecutor js = (JavascriptExecutor) driver;
+        js.executeScript("arguments[0].style.backgroundColor='yellow'", method.classObjectManager().webElement(element));
+        addToPPT("Slide");
+    }
 
     public void unhightElement(By element) throws AWTException {
         JavascriptExecutor js;
@@ -196,6 +201,7 @@ public class commonMethods {
     public void closeTab() {
         driver.close();
     }
+
 }
 
 

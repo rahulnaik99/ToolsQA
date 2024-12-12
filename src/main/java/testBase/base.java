@@ -6,6 +6,7 @@ import org.openqa.selenium.chrome.ChromeDriver;
 
 import java.awt.*;
 
+import java.io.IOException;
 import java.time.Duration;
 
 public class base {

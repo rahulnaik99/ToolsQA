@@ -2,7 +2,10 @@ package Stepdefinition;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
+import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
 
@@ -17,7 +20,14 @@ public class StepdefinitionInteraction {
     }
 
     @Then("User Sort the List Tab")
-    public void userSortTheListTab() {
+    public void userSortTheListTab() throws InterruptedException, AWTException {
+
+        By listContent= By.xpath("//div[contains(@class,'vertical-list-container mt-4')]//div[contains(@class,'list-group-item list-group-item-action')]");
+        java.util.List<WebElement> list = driver.findElements(listContent);
+        method.classObjectManager().actions().clickAndHold(list.get(1)).moveToElement(list.get(2)).build().perform();
+
+
+
     }
 
     @Then("User Sort the Grid Tab")

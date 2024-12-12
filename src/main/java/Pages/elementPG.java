@@ -302,8 +302,7 @@ public class elementPG {
         By buttonColor = By.id("colorChange");
         Assert.assertFalse(method.commonMethods().isEnabled(beforeButton));
         String button = driver.findElement(buttonColor).getCssValue("color");
-        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(duration));
-        wait.until(ExpectedConditions.elementToBeClickable(beforeButton));
+        method.classObjectManager().wait(duration);
         Assert.assertFalse(driver.findElement(buttonColor).getCssValue("color").equalsIgnoreCase(button));
         Assert.assertTrue(method.commonMethods().isEnabled(beforeButton));
 

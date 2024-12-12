@@ -10,6 +10,7 @@ import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
 import java.io.IOException;
+import java.rmi.MarshalException;
 import java.util.Objects;
 
 
@@ -55,44 +56,36 @@ public class StepdefinitionWidgets {
     @Then("User Select {int} from the Slider")
     public void userSelectFromTheSlider(int arg0) throws AWTException, IOException {
         By sliders = By.cssSelector("input[id$='sliderValue']");
-
-
-
+//        yet to build the logic
     }
-
-
 
     @Then("User Validate the Progress Bar")
     public void userValidateTheProgressBar() throws AWTException, IOException {
-        By startButton = By.id("startStopButton");
-        By progressBar = By.cssSelector("div[class='progress-bar bg-success']");
-
-        method.commonMethods().click(startButton);
-        while (true) {
-            // Get the current progress as a percentage
-            String progressText = method.classObjectManager().webElement(progressBar).getText();
-//            assert progressText != null;
-//            int progressValue = Integer.parseInt(progressText);
-
-            // Print progress to the console
-            System.out.println("Progress: " + progressText + "%");
-        }
+        method.pageObjectManager().widgetsPG().validatePorgessbar();
     }
 
-    @Then("User Validate the Tab")
-    public void userValidateTheTab() {
+    @Then("User Validate the {string} Tab")
+    public void userValidateTheTab(String tab) throws AWTException, IOException {
+        method.pageObjectManager().widgetsPG().tabs(tab);
+
     }
 
     @Then("User Hover and and Validate")
-    public void userHoverAndAndValidate() {
+    public void userHoverAndAndValidate() throws AWTException, InterruptedException, IOException {
+      method.pageObjectManager().widgetsPG().hoverButtonLinks();
+
     }
 
     @Then("User Select the option from the menu")
-    public void userSelectTheOptionFromTheMenu() {
+    public void userSelectTheOptionFromTheMenu() throws AWTException, IOException {
+        method.pageObjectManager().widgetsPG().selectMenuHover();
     }
 
     @Then("User Select Value from the List")
-    public void userSelectValueFromTheList() {
+    public void userSelectValueFromTheList() throws AWTException, IOException {
+
+        method.pageObjectManager().widgetsPG().selectMenuDropDowns();
+
     }
 
     @Then("User Select value from the Dropdown")

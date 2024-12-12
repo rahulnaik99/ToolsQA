@@ -24,16 +24,18 @@ Feature: Test Widgets
 #    Then User Select Slider From Widgets
 #    Then User Select 40 from the Slider
 
-  Scenario: Validate the Auto complete field Functionality
-    When User Navigates to Home Page and select Widgets
-    Then User Select Progress Bar From Widgets
-    Then User Validate the Progress Bar
+#  Scenario: Validate the Auto complete field Functionality
+#    When User Navigates to Home Page and select Widgets
+#    Then User Select Progress Bar From Widgets
+#    Then User Validate the Progress Bar
 #
 #  Scenario: Validate the Tab Functionality
 #    When User Navigates to Home Page and select Widgets
 #    Then User Select Tabs From Widgets
-#    Then User Validate the Tab
-#
+#    Then User Validate the "use" Tab
+#    Then User Validate the "origin" Tab
+#    Then User Validate the "what" Tab
+
 #  Scenario: Validate the Hover Functionality
 #    When User Navigates to Home Page and select Widgets
 #    Then User Select Tool Tips From Widgets
@@ -43,12 +45,12 @@ Feature: Test Widgets
 #    When User Navigates to Home Page and select Widgets
 #    Then User Select Menu From Widgets
 #    Then User Select the option from the menu
-#
-#  Scenario: Validate the Hover Functionality
-#    When User Navigates to Home Page and select Widgets
-#    Then User Select Select Menu From Widgets
-#    Then User Select Value from the List
-#    Then User Select value from the Dropdown
-#    Then USer Select value from the multiselect drop down
-#    Then User Select multiple option
+
+  Scenario: Validate the Hover Functionality
+    When User Navigates to Home Page and select Widgets
+    Then User Select Select Menu From Widgets
+    Then User Select Value from the List
+    Then User Select value from the Dropdown
+    Then USer Select value from the multiselect drop down
+    Then User Select multiple option
 #
