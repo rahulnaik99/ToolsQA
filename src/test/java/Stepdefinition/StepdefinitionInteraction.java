@@ -8,6 +8,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 
 import java.awt.*;
+import java.io.IOException;
 
 
 public class StepdefinitionInteraction {
@@ -21,17 +22,13 @@ public class StepdefinitionInteraction {
 
     @Then("User Sort the List Tab")
     public void userSortTheListTab() throws InterruptedException, AWTException {
-
-        By listContent= By.xpath("//div[contains(@class,'vertical-list-container mt-4')]//div[contains(@class,'list-group-item list-group-item-action')]");
-        java.util.List<WebElement> list = driver.findElements(listContent);
-        method.classObjectManager().actions().clickAndHold(list.get(1)).moveToElement(list.get(2)).build().perform();
-
-
+        method.pageObjectManager().interactionsPG().listTabInteraction();
 
     }
 
     @Then("User Sort the Grid Tab")
-    public void userSortTheGridTab() {
+    public void userSortTheGridTab() throws AWTException, InterruptedException, IOException {
+        method.pageObjectManager().interactionsPG().gridTabInteraction();
     }
 
 
@@ -66,5 +63,19 @@ public class StepdefinitionInteraction {
 
     @Then("User Drag in Cursor Style Tab")
     public void userDragInCursorStyleTab() {
+    }
+
+    @Then("User Select the List Tab")
+    public void userSelectTheListTab() throws AWTException, InterruptedException {
+        method.pageObjectManager().interactionsPG().ListTabClick();
+
+
+
+
+    }
+
+    @Then("User Select the Grid Tab")
+    public void userSelectTheGridTab() throws AWTException, InterruptedException, IOException {
+        method.pageObjectManager().interactionsPG().gridTabClick();
     }
 }
