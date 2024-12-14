@@ -201,6 +201,9 @@ public class commonMethods {
     public void closeTab() {
         driver.close();
     }
+    public void dragAndDrop(By Element,int xAxis,int yAxis) throws AWTException {
+        method.classObjectManager().actions().clickAndHold(method.classObjectManager().webElement(Element)).moveByOffset(xAxis,yAxis).release().perform();
+    }
 
 }
 

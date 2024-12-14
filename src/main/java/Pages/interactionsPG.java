@@ -81,4 +81,20 @@ public class interactionsPG {
     }
 
 
+    public void AcceptTab(Boolean flag) throws AWTException, IOException {
+        driver.navigate().refresh();
+        By acceptTab = By.cssSelector("a#droppableExample-tab-accept");
+        method.commonMethods().click(acceptTab);
+        By accept = By.cssSelector("div#acceptable");
+        By notAccepted = By.cssSelector("div#notAcceptable");
+        By dropHere = By.xpath("(//p[text()='Drop here'])[2]");
+        if(flag){
+            method.classObjectManager().actions().dragAndDrop(method.classObjectManager().webElement(accept),method.classObjectManager().webElement(dropHere)).perform();
+        }
+        else {
+
+            method.classObjectManager().actions().dragAndDrop(method.classObjectManager().webElement(notAccepted),method.classObjectManager().webElement(dropHere)).perform();
+        }
+
+    }
 }
