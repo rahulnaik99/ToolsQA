@@ -102,7 +102,7 @@ public class StepdefinitionElement {
 
     @When("^User Verify double click me Button$")
     public void userVerifyDoubleClickButton() throws AWTException {
-        method.pageObjectManager().elementPG().verifydoubleClick("double");
+        method.pageObjectManager().elementPG().verifydoubleClick();
     }
 
     @When("^User Verify right click Button$")

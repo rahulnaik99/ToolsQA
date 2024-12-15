@@ -1,19 +1,13 @@
 package Pages;
-
-//import io.cucumber.java.en_old.Ac;
-
 import commonMethods.objectManager;
 import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
-import java.time.Duration;
 import java.util.List;
 
 
@@ -75,7 +69,6 @@ public class elementPG {
         method.commonMethods().enter(currentAddress, stringCurrentAddress);
         method.commonMethods().enter(permanentAddress, stringPermanentAddress);
         method.commonMethods().scrollToElement(submit);
-
         method.commonMethods().click(submit);
     }
 
@@ -153,7 +146,7 @@ public class elementPG {
 
     public void validateCheckboxOutput(String s) throws AWTException {
         method.commonMethods().scrollToElement(outputString);
-        method.commonMethods().fetch(outputString);
+        Assert.assertTrue(method.commonMethods().fetch(outputString).equalsIgnoreCase(s));
 
     }
 
@@ -184,10 +177,6 @@ public class elementPG {
     }
 
     public void addDateToTable(String name, String lastname, String email, String age, String salary, String department) throws IOException, AWTException {
-        By rowsNo = By.cssSelector("div[class='rt-tr-group']");
-        List<WebElement> rows = driver.findElements(rowsNo);
-
-
         method.commonMethods().click(addButton);
         method.commonMethods().enter(tableFirstName, name);
         method.commonMethods().enter(tableLastName, lastname);
@@ -245,7 +234,7 @@ public class elementPG {
 
     }
 
-    public void verifydoubleClick(String aDouble) throws AWTException {
+    public void verifydoubleClick() throws AWTException {
         By doubleClicks = By.id("doubleClickBtn");
         By doubleClickOutput = By.id("doubleClickMessage");
         method.commonMethods().scrollToElement(doubleClicks);
