@@ -13,6 +13,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Iterator;
 import java.util.List;
+import java.util.Properties;
 import java.util.Set;
 import java.awt.*;
 
@@ -203,6 +204,12 @@ public class commonMethods {
     }
     public void dragAndDrop(By Element,int xAxis,int yAxis) throws AWTException {
         method.classObjectManager().actions().clickAndHold(method.classObjectManager().webElement(Element)).moveByOffset(xAxis,yAxis).release().perform();
+    }
+    public static String getProperty(String key) throws IOException{
+        Properties pro = new Properties();
+        FileInputStream fis = new FileInputStream("src\\main\\resources\\config.properties");
+        pro.load(fis);
+        return pro.getProperty(key);
     }
 
 }

@@ -32,7 +32,7 @@ public class StepdefinitionForms {
         data.put("dobdate", "2");
         data.put("subjects", "Physics"); // Subjects can be comma-separated
         data.put("hobbies", "Reading, Sports"); // Hobbies can be comma-separated
-        data.put("uploadPicture", "path/to/picture.jpg");
+        // data.put("uploadPicture", "path/to/picture.jpg");
         data.put("currentAddress", "1234 Elm Street, Springfield");
         data.put("state", "NCR");
         data.put("city", "Delhi");

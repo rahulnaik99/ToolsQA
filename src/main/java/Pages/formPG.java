@@ -3,8 +3,11 @@ package Pages;
 import commonMethods.objectManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.remote.LocalFileDetector;
+import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.awt.*;
+import java.io.File;
 import java.io.IOException;
 import java.util.Map;
 
@@ -54,7 +57,9 @@ public class formPG {
         method.classObjectManager().webElement(hobbiesCheckbox1).click();
         method.classObjectManager().webElement(hobbiesCheckbox2).click();
         method.classObjectManager().webElement(hobbiesCheckbox3).click();
-        method.commonMethods().enter(uploadPicture, "C:\\Users\\" + System.getProperty("user.name") + "\\IdeaProjects\\ToolsQA\\screenshot.png");
+        ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
+        File file = new File("src\\main\\resources\\screenshot.png");
+        method.commonMethods().enter(uploadPicture,file.getAbsolutePath());
         method.commonMethods().enter(currentAddress, data.get("currentAddress"));
         method.commonMethods().click(state);
         method.commonMethods().click(By.xpath("//div[text()='" + data.get("state") + "']"));
