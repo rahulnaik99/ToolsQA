@@ -66,6 +66,6 @@ public class formPG {
         method.commonMethods().click(By.xpath("//div[text()='" + data.get("city") + "']"));
         method.commonMethods().click(submit);
         method.commonMethods().hightElement(By.cssSelector("div[class='modal-body']"));
-        method.commonMethods().click(By.id("closeLargeModal"));
+//        method.commonMethods().click(By.id("closeLargeModal"));
     }
 }

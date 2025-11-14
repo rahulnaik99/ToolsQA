@@ -68,14 +68,6 @@
       <artifactId>commons-io</artifactId>
       <version>2.18.0</version>
     </dependency>
-    <dependency>
-      <groupId>org.junit.platform</groupId>
-      <artifactId>junit-platform-suite</artifactId>
-      <version>1.9.3</version> <!-- Or latest -->
-      <scope>test</scope>
-    </dependency>
-
-
   </dependencies>
 
   <build>
@@ -100,12 +92,12 @@
             <artifactId>maven-surefire-plugin</artifactId>
             <version>3.2.5</version>
             <configuration>
-                <parallel>classes</parallel> <!-- or methods -->
-                <threadCount>4</threadCount>
-                <forkCount>1</forkCount>
-                <reuseForks>true</reuseForks>
+                <suiteXmlFiles>
+                    <suiteXmlFile>testng.xml</suiteXmlFile>
+                </suiteXmlFiles>
             </configuration>
         </plugin>
+
 
 
 

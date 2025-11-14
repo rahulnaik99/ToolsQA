@@ -3,6 +3,9 @@ package commonMethods;
 import org.apache.commons.io.FileUtils;
 import org.apache.poi.xslf.usermodel.*;
 import org.openqa.selenium.*;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.UUID;
 
 import java.awt.Rectangle;
 import java.awt.event.KeyEvent;
@@ -21,6 +24,8 @@ import java.awt.*;
 public class commonMethods {
     private static XMLSlideShow ppt;
     public static String testEvidence;
+    private static ThreadLocal<XMLSlideShow> pptThreadLocal =
+            ThreadLocal.withInitial(XMLSlideShow::new);
     WebDriver driver;
     objectManager method;
 
@@ -117,6 +122,10 @@ public class commonMethods {
         js.executeScript("arguments[0].style.border='3px solid green'", method.classObjectManager().webElement(element));
         addToPPT("Slide");
     }
+    public static String getTimestamp() {
+        return java.time.LocalDateTime.now()
+                .format(java.time.format.DateTimeFormatter.ofPattern("yyyyMMdd_HHmmss"));
+    }
     public void hightText(By element) throws IOException, AWTException {
         JavascriptExecutor js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.backgroundColor='yellow'", method.classObjectManager().webElement(element));
@@ -131,50 +140,61 @@ public class commonMethods {
 
     public void addToPPT(String titleSlide) throws IOException {
 
-        if (ppt == null) {
-            ppt = new XMLSlideShow();
-        }
+        XMLSlideShow ppt = pptThreadLocal.get();   // Each test gets its own PPT instance
 
-        // Capture a screenshot
-        File screenshot = ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE);
-        FileUtils.copyFile(screenshot, new File("screenshot.png"));
+        // Build unique filename
+        long thread = Thread.currentThread().getId();
+        String timestamp = new SimpleDateFormat("yyyyMMdd_HHmmssSSS").format(new Date());
+        String uuid = UUID.randomUUID().toString().substring(0, 6);
 
-        // Create a new slide
-        XSLFSlide slide = ppt.createSlide(ppt.getSlideMasters().get(0).getLayout(SlideLayout.TITLE));
+//        String fileName = "PPT_" + thread + "_" + timestamp + "_" + uuid + ".ppt";
+        String fileName = "PPT."+thread+".ppt";
 
-        // Add a title text to the slide
+
+        // ---- Create Slide ----
+        XSLFSlide slide = ppt.createSlide(
+                ppt.getSlideMasters().get(0).getLayout(SlideLayout.TITLE)
+        );
+
+        // Title
         XSLFTextShape title = slide.createTextBox();
         title.setAnchor(new Rectangle(50, 30, 600, 40));
-        XSLFTextParagraph p = title.addNewTextParagraph();
-        XSLFTextRun r = p.addNewTextRun();
+        XSLFTextRun r = title.addNewTextParagraph().addNewTextRun();
         r.setText("Screenshot " + ppt.getSlides().size());
         r.setFontColor(Color.WHITE);
-        r.setFontSize(20.0);
+        r.setFontSize(20.00);
 
+
+        // Header
         XSLFTextShape header = slide.createTextBox();
         header.setAnchor(new Rectangle(50, 10, 600, 20));
-        XSLFTextParagraph headerParagraph = header.addNewTextParagraph();
-        XSLFTextRun headerRun = headerParagraph.addNewTextRun();
+        XSLFTextRun headerRun = header.addNewTextParagraph().addNewTextRun();
         headerRun.setText("Header");
         headerRun.setFontColor(Color.BLACK);
-        headerRun.setFontSize(16.0);
-
-        // Add the screenshot to the slide
-        XSLFPictureData pd = ppt.addPicture(new File("screenshot.png"), XSLFPictureData.PictureType.PNG);
-        XSLFPictureShape pic = slide.createPicture(pd);
-
-        // Set the position and size of the screenshot
-        pic.setAnchor(new Rectangle(50, 100, 600, 400));
-
-        // Delete the screenshot file (optional)
-//                FileUtils.forceDelete(new File("screenshot.png"));
+        headerRun.setFontSize(16.00);
 
 
-        FileOutputStream out = new FileOutputStream(System.getProperty("user.dir") + "/TestEvidences/PowerPoint/" + testEvidence + ".ppt");
+        // ---- Add Screenshot ----
+        XSLFPictureData pictureData = ppt.addPicture(
+                ((TakesScreenshot) driver).getScreenshotAs(OutputType.FILE),
+                XSLFPictureData.PictureType.PNG
+        );
+
+        XSLFPictureShape picture = slide.createPicture(pictureData);
+        picture.setAnchor(new Rectangle(50, 100, 600, 400));
+
+
+        // ---- Save PPT to a unique file ----
+        File dir = new File(System.getProperty("user.dir") + "/TestEvidences/PowerPoint/");
+        if (!dir.exists()) dir.mkdirs();
+
+        FileOutputStream out = new FileOutputStream(
+                dir.getAbsolutePath() + "/" + fileName
+        );
         ppt.write(out);
         out.close();
-
     }
+
 
     public void dateTime() {
         LocalDateTime now = LocalDateTime.now();

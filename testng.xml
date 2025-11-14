@@ -2,7 +2,12 @@
 
     <test name="Elements">
         <classes>
-            <class name="Test.TestRunnerElements"/>
+            <class name="Test.TestRunnerForms"/>
+        </classes>
+    </test>
+    <test name="Elements2">
+        <classes>
+            <class name="Test.TestRunnerForms"/>
         </classes>
     </test>
 </suite>
