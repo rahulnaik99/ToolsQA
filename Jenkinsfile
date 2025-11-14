@@ -1,12 +1,6 @@
 pipeline {
     agent any
 
-    tools {
-        // assuming you're using Maven
-//         maven 'MAVEN_HOME'
-        // or specify the Maven installation name configured on Jenkins
-    }
-
     environment {
         // Directory where you save PPTs / screenshots
         EVIDENCE_DIR = "${WORKSPACE}/TestEvidences"
