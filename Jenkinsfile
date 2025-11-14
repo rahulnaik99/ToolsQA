@@ -38,7 +38,7 @@ pipeline {
                 stage('Suite Part 2') {
                     steps {
                         echo "Running second part of TestNG suite..."
-                        bat 'cd ToolsQA && mvn test -DsuiteXmlFile=testng.xml -Dtestng.threadCount=3'
+                        bat 'cd ToolsQA && mvn test -DsuiteXmlFile=testng1.xml -Dtestng.threadCount=3'
                     }
                 }
             }
