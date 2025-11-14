@@ -1,26 +1,20 @@
-package Stepdefinition;
+package stepDefinitions;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
-import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
+import testBase.base;
 
 import java.awt.*;
 import java.io.IOException;
-import java.rmi.MarshalException;
-import java.util.Objects;
 
 
-public class StepdefinitionWidgets {
-    WebDriver driver;
+public class StepdefinitionWidgets  extends base {
     objectManager method;
 
-    public StepdefinitionWidgets() throws AWTException {
+    public StepdefinitionWidgets() throws AWTException, IOException {
         method = new objectManager();
-        driver = method.base().initializeDriver();
     }
 
 

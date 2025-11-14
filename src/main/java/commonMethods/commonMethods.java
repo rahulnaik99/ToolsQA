@@ -24,7 +24,7 @@ public class commonMethods {
     WebDriver driver;
     objectManager method;
 
-    public commonMethods() throws AWTException {
+    public commonMethods() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }
@@ -123,7 +123,7 @@ public class commonMethods {
         addToPPT("Slide");
     }
 
-    public void unhightElement(By element) throws AWTException {
+    public void unhightElement(By element) throws IOException, AWTException {
         JavascriptExecutor js;
         js = (JavascriptExecutor) driver;
         js.executeScript("arguments[0].style.border=''", method.classObjectManager().webElement(element));
@@ -202,7 +202,7 @@ public class commonMethods {
     public void closeTab() {
         driver.close();
     }
-    public void dragAndDrop(By Element,int xAxis,int yAxis) throws AWTException {
+    public void dragAndDrop(By Element,int xAxis,int yAxis) throws IOException, AWTException {
         method.classObjectManager().actions().clickAndHold(method.classObjectManager().webElement(Element)).moveByOffset(xAxis,yAxis).release().perform();
     }
     public static String getProperty(String key) throws IOException{

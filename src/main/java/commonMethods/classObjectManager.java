@@ -9,13 +9,14 @@ import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.awt.*;
+import java.io.IOException;
 import java.time.Duration;
 
 public class classObjectManager {
     WebDriver driver;
     objectManager method;
 
-    public classObjectManager() throws AWTException {
+    public classObjectManager() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }

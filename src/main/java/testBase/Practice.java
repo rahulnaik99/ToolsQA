@@ -6,7 +6,7 @@ import org.apache.poi.xssf.usermodel.XSSFCell;
 import org.apache.poi.xssf.usermodel.XSSFRow;
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.junit.Test;
+import org.testng.Assert;
 import org.openqa.selenium.*;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.edge.EdgeDriver;
@@ -21,7 +21,7 @@ import java.util.function.Function;
 public class Practice {
 
     public static WebDriver driver;
-    @Test
+//    @Test
     public void prac() throws InterruptedException, IOException, InvalidFormatException {
 
         // Ensure the path to chromedriver is correct

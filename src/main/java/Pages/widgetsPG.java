@@ -11,7 +11,7 @@ public class widgetsPG {
     WebDriver driver;
     objectManager method;
 
-    public widgetsPG() throws AWTException {
+    public widgetsPG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }

@@ -1,10 +1,9 @@
 package Pages;
 
 import commonMethods.objectManager;
-import org.junit.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-
+import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
 
@@ -12,7 +11,7 @@ public class alartFrameWindowPG {
     WebDriver driver;
     objectManager method;
 
-    public alartFrameWindowPG() throws AWTException {
+    public alartFrameWindowPG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }
@@ -58,9 +57,10 @@ public class alartFrameWindowPG {
     public void acceptandDecline() throws AWTException, IOException {
         method.commonMethods().click(acceptOrDecline);
         driver.switchTo().alert().accept();
-        Assert.assertEquals("You selected Ok", method.commonMethods().fetch(outputString));
+        Assert.assertEquals("You selected Ok", method.commonMethods().fetch(outputString),"");
         method.commonMethods().click(acceptOrDecline);
         driver.switchTo().alert().dismiss();
+
         Assert.assertEquals("You selected Cancel", method.commonMethods().fetch(outputString));
     }
 

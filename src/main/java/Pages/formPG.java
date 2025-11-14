@@ -15,7 +15,7 @@ public class formPG {
     WebDriver driver;
     objectManager method;
 
-    public formPG() throws AWTException {
+    public formPG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }
@@ -57,7 +57,6 @@ public class formPG {
         method.classObjectManager().webElement(hobbiesCheckbox1).click();
         method.classObjectManager().webElement(hobbiesCheckbox2).click();
         method.classObjectManager().webElement(hobbiesCheckbox3).click();
-        ((RemoteWebDriver) driver).setFileDetector(new LocalFileDetector());
         File file = new File("src\\main\\resources\\screenshot.png");
         method.commonMethods().enter(uploadPicture,file.getAbsolutePath());
         method.commonMethods().enter(currentAddress, data.get("currentAddress"));

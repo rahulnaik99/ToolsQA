@@ -1,19 +1,19 @@
-package Stepdefinition;
+package stepDefinitions;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.WebDriver;
+import testBase.base;
 
 import java.awt.*;
+import java.io.IOException;
 
 
-public class StepdefinitionBookStore {
-    WebDriver driver;
+public class StepdefinitionBookStore extends base {
     objectManager method;
 
-    public StepdefinitionBookStore() throws AWTException {
+    public StepdefinitionBookStore() throws IOException, AWTException {
         method = new objectManager();
-        driver = method.base().initializeDriver();
     }
 
     @Then("User Enter the User name and Password")

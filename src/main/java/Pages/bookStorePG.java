@@ -6,12 +6,13 @@ import testBase.base;
 import commonMethods.objectManager;
 
 import java.awt.*;
+import java.io.IOException;
 
 public class bookStorePG {
     WebDriver driver;
     objectManager method;
 
-    public bookStorePG() throws AWTException {
+    public bookStorePG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }

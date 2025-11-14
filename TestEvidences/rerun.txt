@@ -1,2 +1,0 @@
-file:src/test/resources/FeatureFiles/testAlertsFramsWindows.feature:10
-file:src/test/resources/FeatureFiles/testElements.feature:53:59

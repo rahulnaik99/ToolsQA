@@ -1,4 +1,4 @@
-package Stepdefinition;
+package stepDefinitions;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.And;
@@ -6,17 +6,16 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import testBase.base;
 
 import java.awt.*;
 import java.io.IOException;
 
-public class StepdefinitionElement {
-    WebDriver driver;
+public class StepdefinitionElement extends base {
     objectManager method;
 
-    public StepdefinitionElement() throws AWTException {
+    public StepdefinitionElement() throws AWTException, IOException {
         method = new objectManager();
-        driver = method.base().initializeDriver();
     }
 
 
@@ -33,7 +32,7 @@ public class StepdefinitionElement {
     }
 
     @Then("User Validates the Results")
-    public void userValidatesTheResults() throws AWTException {
+    public void userValidatesTheResults() throws AWTException, IOException {
         method.pageObjectManager().elementPG().validateTextboxOutput();
     }
 
@@ -48,12 +47,12 @@ public class StepdefinitionElement {
     }
 
     @And("^Validates the Check box output$")
-    public void validatesTheCheckBoxOutput() throws AWTException {
+    public void validatesTheCheckBoxOutput() throws AWTException, IOException {
         method.pageObjectManager().elementPG().validateCheckboxOutput("You have selected : downloads wordFile excelFile");
     }
 
     @And("^Validates the Radio Button output for (.*)$")
-    public void validatesRadioButtonOutput(String expectedButton) throws AWTException {
+    public void validatesRadioButtonOutput(String expectedButton) throws AWTException, IOException {
         method.pageObjectManager().elementPG().radioButtonValidation(expectedButton);
     }
 
@@ -64,7 +63,7 @@ public class StepdefinitionElement {
 
 
     @When("User Verify that Table is Loaded")
-    public void userVerifyThatTableIsLoaded() throws AWTException {
+    public void userVerifyThatTableIsLoaded() throws AWTException, IOException {
         method.pageObjectManager().elementPG().nowOfRowInTable();
 
     }
@@ -101,17 +100,17 @@ public class StepdefinitionElement {
 
 
     @When("^User Verify double click me Button$")
-    public void userVerifyDoubleClickButton() throws AWTException {
+    public void userVerifyDoubleClickButton() throws AWTException, IOException {
         method.pageObjectManager().elementPG().verifydoubleClick();
     }
 
     @When("^User Verify right click Button$")
-    public void userVerifyRightClickButton() throws AWTException {
+    public void userVerifyRightClickButton() throws AWTException, IOException {
         method.pageObjectManager().elementPG().verifyRightClick();
     }
 
     @When("^User Verify dynamic click Button$")
-    public void userVerifyDynamicClickButton() throws AWTException {
+    public void userVerifyDynamicClickButton() throws AWTException, IOException {
         method.pageObjectManager().elementPG().verifyClickMe();
     }
 
@@ -121,12 +120,12 @@ public class StepdefinitionElement {
     }
 
     @When("User Validates the Links with API Status")
-    public void userValidatesTheLinksWithAPIStatus() throws AWTException {
+    public void userValidatesTheLinksWithAPIStatus() throws AWTException, IOException {
         method.pageObjectManager().elementPG().apiValidation(By.tagName("a"));
     }
 
     @Then("Validate that the Image has a broken Link")
-    public void validateThatTheImageHasABrokenLink() throws AWTException {
+    public void validateThatTheImageHasABrokenLink() throws AWTException, IOException {
         method.pageObjectManager().elementPG().apiValidation(By.xpath("(//img[@src='/images/Toolsqa.jpg'])[2]"));
         method.pageObjectManager().elementPG().apiValidation(By.xpath("//img[@src='/images/Toolsqa_1.jpg']"));
         method.pageObjectManager().elementPG().apiValidation(By.cssSelector("a[href=\"http://the-internet.herokuapp.com/status_codes/500\"]"));
@@ -137,20 +136,20 @@ public class StepdefinitionElement {
     }
 
     @Then("User download the file")
-    public void userDownloadTheFile() throws AWTException {
+    public void userDownloadTheFile() throws AWTException, IOException {
         By downloadFile = By.cssSelector("a[id='downloadButton']");
         method.pageObjectManager().elementPG().downLoad(downloadFile);
 
     }
 
     @Then("User upload the file")
-    public void userUploadTheFile() throws AWTException {
+    public void userUploadTheFile() throws AWTException, IOException {
         By uploadFileCss = By.cssSelector("input#uploadFile");
         method.pageObjectManager().elementPG().upLoad(uploadFileCss);
     }
 
     @Then("User Click button is enable after {int} seconds and also check the Color of the button")
-    public void userClickButtonIsEnableAfterSeconds(int arg0) throws AWTException {
+    public void userClickButtonIsEnableAfterSeconds(int arg0) throws AWTException, IOException {
         method.pageObjectManager().elementPG().buttonValidate(arg0);
     }
 

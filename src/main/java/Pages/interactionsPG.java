@@ -12,12 +12,12 @@ public class interactionsPG {
     WebDriver driver;
     objectManager method;
 
-    public interactionsPG() throws AWTException {
+    public interactionsPG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }
 
-    public void listTabInteraction() throws AWTException, InterruptedException {
+    public void listTabInteraction() throws IOException, AWTException, InterruptedException {
         By listTab = By.cssSelector("a#demo-tab-list");
         By listContent= By.xpath("//div[contains(@class,'vertical-list-container mt-4')]//div[contains(@class,'list-group-item list-group-item-action')]");
 
@@ -43,7 +43,7 @@ public class interactionsPG {
         method.classObjectManager().actions().clickAndHold(list.get(2)).moveToElement(list.get(8)).release().perform();
     }
 
-    public void ListTabClick() throws AWTException, InterruptedException {
+    public void ListTabClick() throws IOException, AWTException, InterruptedException {
         By list = By.cssSelector("a#demo-tab-list");
         By listElements = By.cssSelector("li[class$='mt-2 list-group-item list-group-item-action']");
         method.commonMethods().scrollToElement(list);

@@ -1,21 +1,19 @@
-package Stepdefinition;
+package stepDefinitions;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.When;
-import org.openqa.selenium.WebDriver;
+import testBase.base;
 
 import java.awt.*;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 
-public class StepdefinitionForms {
-    WebDriver driver;
+public class StepdefinitionForms extends base {
     objectManager method;
 
-    public StepdefinitionForms() throws AWTException {
+    public StepdefinitionForms() throws AWTException, IOException {
         method = new objectManager();
-        driver = method.base().initializeDriver();
     }
 
 

@@ -1,10 +1,10 @@
 package Pages;
 import commonMethods.objectManager;
-import org.junit.Assert;
+import org.testng.Assert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-
+import org.testng.Assert;
 import java.awt.*;
 import java.io.File;
 import java.io.IOException;
@@ -15,7 +15,7 @@ public class elementPG {
     WebDriver driver;
     objectManager method;
 
-    public elementPG() throws AWTException {
+    public elementPG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }
@@ -79,7 +79,7 @@ public class elementPG {
 
     }
 
-    public void validateTextboxOutput() throws AWTException {
+    public void validateTextboxOutput() throws IOException, AWTException {
         if (method.commonMethods().fetch(fullNameOutput).equalsIgnoreCase(Fullname) && method.commonMethods().fetch(emailOutput).equalsIgnoreCase(stringEmail) && method.commonMethods().fetch(currentAddressOutput).equalsIgnoreCase(stringCurrentAddress)) {
             method.commonMethods().fetch(permanentAddressOutput);
         }
@@ -144,17 +144,18 @@ public class elementPG {
 
     }
 
-    public void validateCheckboxOutput(String s) throws AWTException {
+    public void validateCheckboxOutput(String s) throws IOException, AWTException {
         method.commonMethods().scrollToElement(outputString);
         Assert.assertTrue(method.commonMethods().fetch(outputString).equalsIgnoreCase(s));
 
     }
 
-    public void radioButtonValidation(String button) throws AWTException {
+    public void radioButtonValidation(String button) throws IOException, AWTException {
         By radioButtonOutput = By.cssSelector("p[class='mt-3']");
         String[] parts = method.commonMethods().fetch(radioButtonOutput).split(" ");
         System.out.printf(parts[3]);
-        Assert.assertTrue("Pass", parts[3].equalsIgnoreCase(button));
+        Assert.assertEquals("true", parts[3].equalsIgnoreCase(button));
+
     }
 
     public void selectFromElements(String options) throws IOException, AWTException {
@@ -171,7 +172,7 @@ public class elementPG {
     public void nowOfRowInTable() {
         By rowsNo = By.cssSelector("div[class='rt-tr-group']");
         List<WebElement> rows = driver.findElements(rowsNo);
-        Assert.assertFalse("Table is Empty", rows.isEmpty());
+        Assert.assertEquals("Table is Empty", rows.isEmpty());
         System.out.printf(String.valueOf(rows.size()));
 
     }
@@ -234,7 +235,7 @@ public class elementPG {
 
     }
 
-    public void verifydoubleClick() throws AWTException {
+    public void verifydoubleClick() throws IOException, AWTException {
         By doubleClicks = By.id("doubleClickBtn");
         By doubleClickOutput = By.id("doubleClickMessage");
         method.commonMethods().scrollToElement(doubleClicks);
@@ -243,7 +244,7 @@ public class elementPG {
 
     }
 
-    public void verifyRightClick() throws AWTException {
+    public void verifyRightClick() throws IOException, AWTException {
         By rightClicks = By.xpath("//*[text()='Right Click Me']");
         By rightClickOutput = By.id("rightClickMessage");
         method.commonMethods().scrollToElement(rightClicks);
@@ -251,7 +252,7 @@ public class elementPG {
         Assert.assertTrue(method.commonMethods().fetch(rightClickOutput).equalsIgnoreCase("You have done a right click"));
     }
 
-    public void verifyClickMe() throws AWTException {
+    public void verifyClickMe() throws IOException, AWTException {
         By dynamicClick = By.xpath("//*[text()='Click Me']");
         By dynamicClickOutput = By.id("dynamicClickMessage");
         method.commonMethods().scrollToElement(dynamicClick);
@@ -266,14 +267,14 @@ public class elementPG {
 
     }
 
-    public void apiValidation(By Element) throws AWTException {
+    public void apiValidation(By Element) throws IOException, AWTException {
 
         System.out.printf(method.commonMethods().linkChecker(Element));
 
     }
 
 
-    public void downLoad(By elementDownload) throws AWTException {
+    public void downLoad(By elementDownload) throws IOException, AWTException {
         method.classObjectManager().webElement(elementDownload).click();
         String downloadPath = "C:\\Users\\" + System.getProperty("user.name") + "\\Downloads\\sampleFile.jpeg";
         File downloadFile = new File(downloadPath);
@@ -282,11 +283,11 @@ public class elementPG {
 
     }
 
-    public void upLoad(By elementUpload) throws AWTException {
+    public void upLoad(By elementUpload) throws IOException, AWTException {
         method.classObjectManager().webElement(elementUpload).sendKeys("C:\\Users\\" + System.getProperty("user.name") + "\\IdeaProjects\\ToolsQA\\TestEvidences\\sampleFile.jpeg");
     }
 
-    public void buttonValidate(int duration) throws AWTException {
+    public void buttonValidate(int duration) throws IOException, AWTException {
         By beforeButton = By.id("enableAfter");
         By buttonColor = By.id("colorChange");
         Assert.assertFalse(method.commonMethods().isEnabled(beforeButton));

@@ -1,25 +1,24 @@
-package Stepdefinition;
+package stepDefinitions;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import testBase.base;
 
 import java.awt.*;
 import java.io.IOException;
 
 
-public class StepdefinitionInteraction {
-    WebDriver driver;
+public class StepdefinitionInteraction extends base {
     objectManager method;
 
-    public StepdefinitionInteraction() throws AWTException {
+    public StepdefinitionInteraction() throws AWTException, IOException {
         method = new objectManager();
-        driver = method.base().initializeDriver();
     }
 
     @Then("User Sort the List Tab")
-    public void userSortTheListTab() throws InterruptedException, AWTException {
+    public void userSortTheListTab() throws InterruptedException, AWTException, IOException {
         method.pageObjectManager().interactionsPG().listTabInteraction();
 
     }
@@ -31,7 +30,7 @@ public class StepdefinitionInteraction {
 
 
     @Then("User Resize the tab")
-    public void userResizeTheTab() throws AWTException, InterruptedException {
+    public void userResizeTheTab() throws AWTException, InterruptedException, IOException {
         By resizeHandle = By.xpath("(//span[contains(@class,'react-resizable-handle')])[1]");
         method.commonMethods().scrollToElement(resizeHandle);
         method.commonMethods().dragAndDrop(resizeHandle,50,50);
@@ -96,7 +95,7 @@ public class StepdefinitionInteraction {
     }
 
     @Then("User Drag in Simple Tab")
-    public void userDragInSimpleTab() throws AWTException {
+    public void userDragInSimpleTab() throws AWTException, IOException {
         By dragMe = By.cssSelector("div#dragBox");
         method.commonMethods().dragAndDrop(dragMe,300,0);
 
@@ -168,7 +167,7 @@ public class StepdefinitionInteraction {
     }
 
     @Then("User Select the List Tab")
-    public void userSelectTheListTab() throws AWTException, InterruptedException {
+    public void userSelectTheListTab() throws AWTException, InterruptedException, IOException {
         method.pageObjectManager().interactionsPG().ListTabClick();
 
 

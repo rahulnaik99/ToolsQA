@@ -1,22 +1,21 @@
-package Stepdefinition;
+package stepDefinitions;
 
 import commonMethods.objectManager;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import testBase.base;
 
 import java.awt.*;
 import java.io.IOException;
 
 
-public class StepdefinitionAlertFrameWindows {
-    WebDriver driver;
+public class StepdefinitionAlertFrameWindows extends base {
     objectManager method;
 
-    public StepdefinitionAlertFrameWindows() throws AWTException {
+    public StepdefinitionAlertFrameWindows() throws IOException, AWTException {
         method = new objectManager();
-        driver = method.base().initializeDriver();
     }
 
     @When("^User click on the Tab Button$")
