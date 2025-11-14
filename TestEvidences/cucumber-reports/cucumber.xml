@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<testsuite errors="0" failures="0" name="io.cucumber.core.plugin.JUnitFormatter" skipped="0" tests="1" time="34.293">
-    <testcase classname="Test Forms" name="Validate the Textbox Functionality" time="34.075">
-        <system-out><![CDATA[When User Navigates to Home Page and select Forms...........................passed
-Then User Select Practice Form From Forms...................................passed
-Then User Enter the information in the PracticeForm and Submit..............passed
-]]></system-out>
-    </testcase>
-</testsuite>

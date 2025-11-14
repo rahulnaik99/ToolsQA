@@ -3,7 +3,7 @@ pipeline {
 
     tools {
         // assuming you're using Maven
-        maven 'MAVEN_HOME'  
+//         maven 'MAVEN_HOME'
         // or specify the Maven installation name configured on Jenkins
     }
 
@@ -15,15 +15,15 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                // Checkout your GitHub repo
-                checkout scm
+                bat "git pull https://github.com/rahulnaik99/ToolsQA.git"
+                bat "cd ToolsQA"
             }
         }
 
         stage('Build') {
             steps {
                 // Clean & compile, skip tests for this phase
-                sh "mvn clean compile -DskipTests"
+                bat "mvn clean compile -DskipTests"
             }
         }
 
@@ -33,13 +33,13 @@ pipeline {
                 stage('Suite Part 1') {
                     steps {
                         // Use a custom TestNG suite or subset
-                        sh "mvn test -DsuiteXmlFile=testng.xml -Dtestng.threadCount=3"
+                        bat "mvn test -DsuiteXmlFile=testng.xml -Dtestng.threadCount=3"
                     }
                 }
                 stage('Suite Part 2') {
                     steps {
                         // You can run the same suite again but split it differently via maven/fork or groups
-                        sh "mvn test -DsuiteXmlFile=testng.xml -Dtestng.threadCount=3"
+                        bat "mvn test -DsuiteXmlFile=testng.xml -Dtestng.threadCount=3"
                     }
                 }
                 // Add more parallel stages if required
