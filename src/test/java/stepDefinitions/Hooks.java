@@ -26,6 +26,7 @@ public class Hooks extends base {
         WebDriver driver = initializeDriver();
         driver.get(commonMethods.getProperty("url"));
         System.out.println("✅ Hooks invoked, browser started");
+        System.out.println(System.getProperty("BROWSER"));
     }
 
     @After
