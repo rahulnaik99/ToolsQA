@@ -1,5 +1,5 @@
-<suite name="ParallelSuite" parallel="tests" thread-count="3">
-
+<!--<suite name="ParallelSuite" parallel="tests" thread-count="1">-->
+    <suite name="ParallelSuite" >
     <test name="Elements">
         <classes>
             <class name="Test.TestRunnerBookStore"/>

@@ -227,7 +227,7 @@ public class commonMethods {
     }
     public static String getProperty(String key) throws IOException{
         Properties pro = new Properties();
-        FileInputStream fis = new FileInputStream("src\\main\\resources\\config.properties");
+        FileInputStream fis = new FileInputStream("/Users/rahul/IdeaProjects/ToolsQA/src/main/resources/config.properties");
         pro.load(fis);
         return pro.getProperty(key);
     }

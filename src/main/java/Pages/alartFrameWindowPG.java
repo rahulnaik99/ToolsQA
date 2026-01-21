@@ -3,6 +3,8 @@ package Pages;
 import commonMethods.objectManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.FindBy;
 import org.testng.Assert;
 import java.awt.*;
 import java.io.IOException;
@@ -11,12 +13,15 @@ public class alartFrameWindowPG {
     WebDriver driver;
     objectManager method;
 
+    @FindBy(id="timerAlertButton")
+    WebElement pauseAlert;
+
+
+
     public alartFrameWindowPG() throws IOException, AWTException {
         method = new objectManager();
         driver = method.base().initializeDriver();
     }
-
-    By pauseAlert = By.id("timerAlertButton");
     By seeAlert = By.id("alertButton");
     By acceptOrDecline = By.id("confirmButton");
     By outputString = By.id("confirmResult");
@@ -49,7 +54,7 @@ public class alartFrameWindowPG {
     }
 
     public void managerTimerAlert() throws AWTException, IOException, InterruptedException {
-        method.commonMethods().click(pauseAlert);
+        pauseAlert.click();
         Thread.sleep(5000);
         driver.switchTo().alert().accept();
     }
